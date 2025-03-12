@@ -1,22 +1,25 @@
 <template>
+  <div class="bgm">
+    <el-carousel height="80vh" motion-blur interval="5000" arrow="always">
+      <el-carousel-item v-for="item in 4" :key="item">
+        <img class="bgmimg" src="../../assets/home-bgm.png">
+      </el-carousel-item>
+    </el-carousel>
+  </div>
   <div class="container">
-    <!-- 导航栏保留原有组件 -->
     <navbar />
-
     <header class="left">
-      <el-card shadow="never" class="header-card">
-        <div class="header-content">
-          <h1 class="el-title" style="font-size: 45px;">经智创投</h1>
-          <h2 class="el-subtitle" style="font-size: 40px;">RBF投融资模式的LLM数智先锋</h2>
-          <el-divider class="custom-divider" />
-          <div class="text">
-            <el-space direction="vertical" :size="20">
-              <p>ASDT GHJ KLZKCR QWRAPSG SGQHALNKK ASDT GHJ KLZKCR QWRAPSG</p>
-              <p>XCXR QWRAPSG SGQHALNKK ASDT GHJ KLZKCR QWRAPSG SGQHALNKK.</p>
-            </el-space>
-          </div>
+      <div class="header-content">
+        <h1 style="font-size: 45px">经智创投</h1>
+        <h2 style="font-size: 40px">RBF投融资模式的LLM数智先锋</h2>
+        <el-divider class="custom-divider" />
+        <div class="text">
+          <el-space direction="vertical" :size="20">
+            <p>ASDT GHJ KLZKCR QWRAPSG SGQHALNKK ASDT GHJ KLZKCR QWRAPSG</p>
+            <p>XCXR QWRAPSG SGQHALNKK ASDT GHJ KLZKCR QWRAPSG SGQHALNKK.</p>
+          </el-space>
         </div>
-      </el-card>
+      </div>
     </header>
 
   </div>
@@ -24,17 +27,30 @@
 
 <script setup>
 import navbar from '@/components/navbar.vue'
-import { ElCard, ElDivider, ElSpace } from 'element-plus'
+import { ElDivider, ElSpace, ElCarousel } from 'element-plus'
 </script>
 
 <style scoped>
 .container {
-  min-height: 100vh;
+  min-height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: no-repeat url('../../assets/home-bgm.png');
-  background-size: cover;
+}
+
+.bgm {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: auto;
+}
+
+.bgmimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .left {
@@ -43,20 +59,13 @@ import { ElCard, ElDivider, ElSpace } from 'element-plus'
   flex-direction: column;
   justify-content: center;
   margin-left: 10%;
-}
-
-.header-card {
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  width: fit-content;
-  backdrop-filter: blur(5px);
+  width: 50%;
+  height: 450px;
+  z-index: 1;
 }
 
 .header-content {
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
 }
 
 .el-title {

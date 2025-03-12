@@ -63,6 +63,7 @@ const toHome = () => {
 <style scoped>
 .container {
   position: fixed;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -85,11 +86,13 @@ const toHome = () => {
   flex-direction: column;
   justify-content: center;
   gap: 10px;
+  height: 450px;
 }
 
 .right {
   background-color: white;
   width: 400px;
+  height: 450px;
   padding: 50px;
   border-radius: 10px;
 }

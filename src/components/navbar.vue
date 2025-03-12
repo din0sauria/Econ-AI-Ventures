@@ -19,26 +19,26 @@
 
       <!-- 登录按钮 -->
       <el-menu-item index="login" class="nav-item">
-        <el-button type="text" class="login-btn" @click="$router.push('/login')">
+        <el-avatar type="text" class="login-btn" @click="$router.push('/login')">
           Login
-        </el-button>
+        </el-avatar>
       </el-menu-item>
     </el-menu>
   </nav>
 </template>
 
 <script setup lang="ts">
-import { ElMenu, ElMenuItem, ElButton } from 'element-plus'
+import { ElMenu, ElMenuItem, ElButton, ElAvatar } from 'element-plus'
 </script>
 
 <style scoped>
 .nav-container {
   width: 100vw;
-  padding: 5vh 10vw;
+  padding: 20px 100px;
   background: transparent;
 }
 
-/* 深度选择器修改element默认样式 */
+/* 深度选择器 */
 :deep(.nav-menu) {
   display: flex;
   align-items: center;
