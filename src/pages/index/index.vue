@@ -25,9 +25,11 @@ import { ref } from 'vue'
 <style scoped>
 .container {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  background-image: url('../../assets/home-bgm.png')
+  background: no-repeat url('../../assets/home-bgm.png');
+  background-size: cover;
 }
 
 .left {
