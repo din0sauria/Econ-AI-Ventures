@@ -3,39 +3,43 @@
     <Navbar />
     <div class="main">
       <header class="left">
-        <h1 style="font-weight: bold;font-size: 45px;">经智创投</h1>
-        <h2 style="font-weight: bold;font-size: 40px;">RBF投融资模式的LLM数智先锋</h2>
-        <div class="text">
-          <p>ASDT GHJ KLZKCR QWRAPSG SGQHALNKK ASDT GHJ KLZKCR QWRAPSG</p>
-          <p>XCXR QWRAPSG SGQHALNKK ASDT GHJ KLZKCR QWRAPSG SGQHALNKK.</p>
+        <div class="header-content">
+          <h1 style="font-size: 45px">经智创投</h1>
+          <h2 style="font-size: 40px">RBF投融资模式的LLM数智先锋</h2>
+          <el-divider class="custom-divider" />
+          <div class="text">
+            <el-space direction="vertical" :size="20">
+              <p>ASDT GHJ KLZKCR QWRAPSG SGQHALNKK ASDT GHJ KLZKCR QWRAPSG</p>
+              <p>XCXR QWRAPSG SGQHALNKK ASDT GHJ KLZKCR QWRAPSG SGQHALNKK.</p>
+            </el-space>
+          </div>
         </div>
       </header>
 
       <!-- 登录表单 -->
       <main class="right">
-        <div class="input-group">
-          <label>Your Email</label>
-          <input type="email" placeholder="123456789@163.com" />
-        </div>
+        <el-form label-position="top" class="login-form">
+          <el-form-item label="Your Email">
+            <el-input type="email" placeholder="123456789@163.com" size="large" disabled />
+          </el-form-item>
 
-        <div class="input-group">
-          <label>Password</label>
-          <input type="password" placeholder="**********" />
-        </div>
+          <el-form-item label="Password">
+            <el-input type="logo-item" placeholder="**********" show-password size="large" disabled />
+          </el-form-item>
 
-        <div class="remember-forgot">
-          <label> <input type="checkbox" /> Remember me! </label>
-          <a href="#">Forget Password?</a>
-        </div>
+          <div class="remember-forgot">
+            <el-checkbox>Remember me!</el-checkbox>
+            <el-link type="primary" :underline="false">Forget Password?</el-link>
+          </div>
 
-        <button class="signin-btn" @click="toHome">Sign In</button>
+          <el-button type="primary" size="large" class="signin-btn" @click="toHome">
+            Sign In
+          </el-button>
 
-        <div class="separator">OR USE</div>
+          <el-divider class="separator">OR USE</el-divider>
 
-
+        </el-form>
       </main>
-
-
     </div>
     <footer class="footer">
       <p>ASDT GHJ KLZKCR PARKERANK ASDT GHJ KLZ</p>
@@ -47,6 +51,8 @@
 <script setup>
 import Navbar from '@/components/navbar.vue'
 import router from '@/router'
+import { ElDivider, ElSpace, ElForm, ElFormItem, ElInput, ElCheckbox, ElLink, ElButton } from 'element-plus'
+
 const toHome = () => {
   router.push({
     path: '/home'
@@ -56,7 +62,6 @@ const toHome = () => {
 
 <style scoped>
 .container {
-  height: 100%;
   position: fixed;
   width: 100%;
   display: flex;
@@ -64,13 +69,14 @@ const toHome = () => {
   align-items: center;
   font-family: Arial, sans-serif;
   background-image: url('../../assets/login-bgm.png');
-
+  background-size: cover;
 }
 
 .main {
   display: flex;
   justify-content: space-between;
   width: 80%;
+  margin-top: 2rem;
 }
 
 .left {
@@ -85,54 +91,50 @@ const toHome = () => {
   background-color: white;
   width: 400px;
   padding: 50px;
-  gap: 15px;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
 }
 
-.input-group {
+.header-content {
+  padding: 2rem;
+}
+
+.custom-divider {
+  background-color: rgba(255, 255, 255, 0.3);
+  margin: 1rem 0;
+}
+
+.text p {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+.login-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-input {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+:deep(.el-form-item__label) {
+  font-weight: bold;
+  color: #666;
+  padding-bottom: 8px;
 }
 
 .remember-forgot {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.9rem;
 }
 
 .signin-btn {
-  background: #007bff;
-  color: white;
-  padding: 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  letter-spacing: 1px;
 }
 
 .separator {
-  text-align: center;
   color: #666;
-  position: relative;
-  margin: 1rem 0;
-}
-
-.signup-btn {
-  background: transparent;
-  border: 1px solid #007bff;
-  color: #007bff;
-  padding: 1rem;
-  border-radius: 4px;
-  cursor: pointer;
+  margin: 1.5rem 0;
 }
 
 .footer {
