@@ -33,7 +33,7 @@ import { ElMenu, ElMenuItem, ElButton, ElAvatar } from 'element-plus'
 
 <style scoped>
 .nav-container {
-  width: 100vw;
+  width: 100%;
   padding: 20px 100px;
   background: transparent;
 }
