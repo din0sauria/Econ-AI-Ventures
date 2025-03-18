@@ -2,7 +2,8 @@
   <div class="bgm">
     <el-carousel height="80vh" motion-blur interval="5000" arrow="always">
       <el-carousel-item v-for="item in 4" :key="item">
-        <img class="bgmimg" src="../../assets/home-bgm.png" />
+        <img v-if="item === 1" class="bgmimg" src="../../assets/home-bgm.png" />
+        <img v-else class="bgmimg" src="../../assets/exp-bgm.png" />
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -15,8 +16,8 @@
         <el-divider class="custom-divider" />
         <div class="text">
           <el-space direction="vertical" :size="20">
-            <p>ASDT GHJ KLZKCR QWRAPSG SGQHALNKK ASDT GHJ KLZKCR QWRAPSG</p>
-            <p>XCXR QWRAPSG SGQHALNKK ASDT GHJ KLZKCR QWRAPSG SGQHALNKK.</p>
+            <p>Revolutionizing RBF with LLM-driven precision—bridging data, scalability, and trust for smarter
+              investment ecosystems.</p>
           </el-space>
         </div>
       </div>
@@ -134,7 +135,6 @@ const currentTabImages = computed(() => currentTab.value.images || []);
 </script>
 
 <style scoped>
-
 .container {
   min-height: 100%;
   width: 100%;
@@ -191,10 +191,12 @@ const currentTabImages = computed(() => currentTab.value.images || []);
   padding: 20px;
   height: max-content;
 }
+
 .el-tabs {
   --el-tabs-header-height: 100px;
 }
-:deep( .el-tabs__item) {
+
+:deep(.el-tabs__item) {
   padding: 32px;
   color: #ccc;
 }

@@ -3,9 +3,9 @@
     <el-menu mode="horizontal" class="nav-menu" :ellipsis="false" background-color="transparent" text-color="#fff"
       active-text-color="#fff">
       <!-- Logo部分 -->
-      <div class="logo-item">
-        <img src="@/assets/logo.svg">
-        <span class="brand-name">经智创投</span>
+      <div class="logo-item" @click="$router.push('/home')">
+        <img src="@/assets/logo.svg" />
+        <p class="brand-name">经智创投</p>
       </div>
 
       <!-- 自动填充空白 -->
@@ -13,7 +13,7 @@
 
       <!-- 导航菜单项 -->
       <el-menu-item index="project" class="nav-item">企业项目</el-menu-item>
-      <el-menu-item index="expert" class="nav-item">专家智萃</el-menu-item>
+      <el-menu-item index="expert" class="nav-item" @click="$router.push('/expert')">专家智萃</el-menu-item>
       <el-menu-item index="fund" class="nav-item">私募智库</el-menu-item>
       <el-menu-item index="chain" class="nav-item">全链智源</el-menu-item>
 
@@ -34,6 +34,7 @@ import { ElMenu, ElMenuItem, ElButton, ElAvatar } from 'element-plus'
 <style scoped>
 .nav-container {
   width: 100%;
+  height: 80px;
   padding: 20px 100px;
   background: transparent;
 }
@@ -54,13 +55,14 @@ import { ElMenu, ElMenuItem, ElButton, ElAvatar } from 'element-plus'
 .logo-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
   color: #fff;
+  width: 300px;
 }
 
 .brand-name {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 20px;
+  width: 100px;
 }
 
 .flex-grow {

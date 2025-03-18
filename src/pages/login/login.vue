@@ -9,8 +9,8 @@
           <el-divider class="custom-divider" />
           <div class="text">
             <el-space direction="vertical" :size="20">
-              <p>ASDT GHJ KLZKCR QWRAPSG SGQHALNKK ASDT GHJ KLZKCR QWRAPSG</p>
-              <p>XCXR QWRAPSG SGQHALNKK ASDT GHJ KLZKCR QWRAPSG SGQHALNKK.</p>
+              <p>Revolutionizing RBF with LLM-driven precision—bridging data, scalability, and trust for smarter
+                investment ecosystems.</p>
             </el-space>
           </div>
         </div>
@@ -61,8 +61,6 @@ const toHome = () => {
 </script>
 
 <style scoped>
-
-
 .container {
   height: 100vh;
   width: 100%;
