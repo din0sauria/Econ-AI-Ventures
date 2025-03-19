@@ -173,6 +173,7 @@ const tabsData = [
         width: 100%;
         height: 100%;
         object-fit: cover;
+        box-shadow: #1B1F25 0 0 10px;
     }
 }
 
