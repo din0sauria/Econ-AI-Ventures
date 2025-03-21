@@ -1,6 +1,7 @@
 <template>
+    <Navbar style="background-color: black;" />
     <div class="business-project">
-        <navbar />
+
 
         <div class="container">
             <h1>创建项目</h1>
@@ -10,376 +11,383 @@
             <el-form :model="projectForm" :rules="formRules" ref="projectFormRef" label-width="120px"
                 class="project-form">
                 <el-form-item label="1.项目名称：" prop="name">
-                    <el-input v-model="projectForm.name" placeholder="请输入项目名称"></el-input>
+                    <el-input v-model="projectForm.name" placeholder="请输入项目名称" />
                 </el-form-item>
 
                 <el-form-item label="2.融资需求：" prop="funding">
-                    <el-input v-model="projectForm.funding" placeholder="请输入融资需求"></el-input>
+                    <el-input v-model="projectForm.funding" placeholder="请输入融资需求（万元）" />
                 </el-form-item>
 
                 <el-form-item label="3.融资目的：" prop="purpose">
-                    <el-input v-model="projectForm.purpose" placeholder="请输入融资目的"></el-input>
+                    <el-input v-model="projectForm.purpose" placeholder="请输入融资目的" type="textarea" :rows="2" />
                 </el-form-item>
             </el-form>
 
-            <!-- 文件上传标签页 -->
-            <el-tabs v-model="activeTab" class="file-tabs">
-                <el-tab-pane label="需求阶段材料" name="first"></el-tab-pane>
-                <el-tab-pane label="解决方案材料" name="second"></el-tab-pane>
-                <el-tab-pane label="商业模式材料" name="third"></el-tab-pane>
-                <el-tab-pane label="增长阶段材料" name="fourth"></el-tab-pane>
-                <el-tab-pane label="壁垒阶段材料" name="fifth"></el-tab-pane>
-                <el-tab-pane label="访谈材料" name="sixth"></el-tab-pane>
-                <el-tab-pane label="其他材料" name="seventh"></el-tab-pane>
-            </el-tabs>
-
-            <!-- 五步法画布区域 -->
-            <div class="canvas-section">
-                <div class="canvas-header">
-                    <h2>五步法画布 草稿（故事版）</h2>
-                    <div class="version-buttons">
-                        <el-button size="small">故事版</el-button>
-                        <el-button size="small">定性版</el-button>
-                        <el-button size="small">定量版</el-button>
-                    </div>
-                </div>
-
-                <div class="canvas-content">
-                    <!-- 需求阶段 -->
-                    <div class="canvas-card demand">
-                        <div class="card-header">
-                            <h3>需求阶段</h3>
-                            <el-button size="small" type="primary">编辑</el-button>
-                        </div>
-                        <div class="card-body">
-                            <div class="content-section">
-                                <p>目标用户：主要是年龄在25-45岁的上班族及家庭消费者。</p>
-                                <p>消费习惯：消费者要求性价比高、方便快捷的用餐体验，同时注重食物的品质和口味。</p>
-                                <p>消费场景：多为午餐、晚餐和工作餐。</p>
-                                <p>健康需求：随着健康意识的提升，消费者更注重餐饮的健康性。</p>
-                                <p>多样化需求：不同消费者对于菜品的口味、种类有着不同的偏好。</p>
-                            </div>
-                            <div class="upload-section">
-                                <p>未上传画布内容，无生成内容。</p>
-                                <p class="upload-tip">上传文档，AI生成</p>
-                                <p class="upload-tip">/导出</p>
+            <!-- 文件上传卡片区域 -->
+            <div class="upload-cards">
+                <el-row :gutter="20">
+                    <el-col v-for="(tab, index) in uploadTabs" :key="index" :xs="24" :sm="12" :md="8" :lg="6">
+                        <div class="upload-card" :class="{ 'active-tab': activeTab === tab.name }"
+                            @click="activeTab = tab.name">
+                            <div class="card-icon">{{ tab.icon }}</div>
+                            <h3>{{ tab.label }}</h3>
+                            <p class="tip-text">点击上传或拖拽文件至此</p>
+                            <div class="hover-mask">
+                                <el-icon :size="32"><upload-filled /></el-icon>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- 解决方案 -->
-                    <div class="canvas-card solution">
-                        <div class="card-header">
-                            <h3>解决方案</h3>
-                            <el-button size="small" type="primary">编辑</el-button>
-                        </div>
-                        <div class="card-body">
-                            <div class="content-section">
-                                <p>老乡村可以通过多种经营策略满足消费者需求：</p>
-                                <p>1. 提供高品质、性价比高的中式快餐；</p>
-                                <p>2. 提供多样化的菜品选择，满足不同消费者的口味偏好；</p>
-                                <p>3. 注重食材的新鲜度和健康性；</p>
-                                <p>4. 提供便捷的点餐和配送服务。</p>
-                            </div>
-                            <div class="upload-section">
-                                <p>未上传画布内容，无生成内容。</p>
-                                <p class="upload-tip">上传文档，AI生成</p>
-                                <p class="upload-tip">/导出</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 商业模式 -->
-                    <div class="canvas-card business-model">
-                        <div class="card-header">
-                            <h3>商业模式</h3>
-                            <el-button size="small" type="primary">编辑</el-button>
-                        </div>
-                        <div class="card-body">
-                            <div class="content-section">
-                                <p>老乡村的商业模式主要包括：</p>
-                                <p>1. 直营店模式：通过直营店树立品牌形象，保证服务质量和产品品质；</p>
-                                <p>2. 加盟模式：通过加盟快速扩张市场，增加品牌影响力；</p>
-                                <p>3. 外卖服务：通过与外卖平台合作，扩大服务范围；</p>
-                                <p>4. 原材料供应：建立稳定的原材料供应渠道，保证产品品质。</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 增长 -->
-                    <div class="canvas-card growth">
-                        <div class="card-header">
-                            <h3>增长</h3>
-                            <el-button size="small" type="primary">编辑</el-button>
-                        </div>
-                        <div class="card-body">
-                            <div class="content-section">
-                                <p>老乡村的增长策略包括：</p>
-                                <p>1. 品牌建设：通过线上线下结合的品牌推广活动提升品牌知名度；</p>
-                                <p>2. 会员体系：建立会员制度，通过积分、优惠券等方式提高客户忠诚度；</p>
-                                <p>3. 数据驱动：利用数据分析优化营销策略和产品开发；</p>
-                                <p>4. 新市场拓展：逐步进入新的城市和区域市场。</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 壁垒 -->
-                    <div class="canvas-card barrier">
-                        <div class="card-header">
-                            <h3>壁垒</h3>
-                            <el-button size="small" type="primary">编辑</el-button>
-                        </div>
-                        <div class="card-body">
-                            <div class="content-section">
-                                <p>老乡村的竞争壁垒包括：</p>
-                                <p>1. 品牌优势：经过多年的经营，建立了良好的品牌声誉；</p>
-                                <p>2. 供应链：拥有稳定的原材料供应和严格的品质控制；</p>
-                                <p>3. 产品创新：持续推出新的菜品和口味，满足消费者不断变化的需求；</p>
-                                <p>4. 运营效率：通过标准化流程提高运营效率，降低成本。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    </el-col>
+                </el-row>
             </div>
 
+            <!-- 五步法画布表格 -->
+            <div class="canvas-table">
+                <el-table :data="tableData" border style="width: 100%">
+                    <el-table-column v-for="(col, index) in columns" :key="index" :prop="col.prop" :label="col.label"
+                        width="180">
+                        <template #default="{ row }">
+                            <div class="cell-content">
+                                <div v-for="(item, i) in row[col.prop]" :key="i" class="paragraph"
+                                    :style="getParagraphStyle(i)">
+                                    {{ item || '-- 待补充内容 --' }}
+                                </div>
+                                <div v-if="!row[col.prop]?.length" class="paragraph">
+                                    -- 待补充内容 --
+                                </div>
+                            </div>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </div>
             <!-- 辅助建议区域 -->
             <div class="advice-section">
                 <h2>迭代辅导建议</h2>
                 <div class="advice-content">
-                    <p>卖方可通过新建项目功能创建新项目信息，其中项目信息依托于企业信息展开（企业：项目1、项目2……）。</p>
-                    <p>卖方新项目创建时即可关联上传企业资料和五步法思维框架材料创建初始版本（故事版）的五步法智导画布。</p>
-                    <p>卖方可通过智导画布功能上传尽调材料，用于补充五步法智导画布的生成依据。</p>
-                    <p>卖方可通过专家智囊专区上传专家访谈视频用于补充五步法智导画布的生成依据。</p>
-                    <p>卖方智导画布可在线编辑、AI生成/优化/PPT生成功能。</p>
-                    <p>所有用户可观看开放的专家访谈视频，使用AI对话、总结、PPT生成功能。</p>
+                    <p v-for="(item, index) in adviceList" :key="index">{{ item }}</p>
                 </div>
                 <div class="advice-actions">
-                    <el-button type="text">AI自动生成辅导意见</el-button>
-                    <el-button>保存</el-button>
+                    <el-button type="text" @click="generateAdvice">AI自动生成辅导意见</el-button>
+                    <el-button type="primary" @click="saveProject">保存</el-button>
                 </div>
             </div>
 
             <!-- 底部操作按钮 -->
             <div class="action-buttons">
-                <el-button type="primary">生成画布</el-button>
+                <el-button type="primary" size="large" @click="generateCanvas">生成画布</el-button>
             </div>
         </div>
     </div>
 </template>
 
-<script>
-import navbar from '@/components/navbar.vue';
+<script setup>
+import { ref, reactive } from 'vue'
+import { ElMessage } from 'element-plus'
+import { UploadFilled } from '@element-plus/icons-vue'
+import Navbar from '@/components/navbar.vue'
 
-export default {
-    components: {
-        navbar
-    },
-    data() {
-        return {
-            activeTab: 'first',
-            projectForm: {
-                name: '',
-                funding: '',
-                purpose: ''
-            },
-            formRules: {
-                name: [
-                    { required: true, message: '请输入项目名称', trigger: 'blur' }
-                ],
-                funding: [
-                    { required: true, message: '请输入融资需求', trigger: 'blur' }
-                ],
-                purpose: [
-                    { required: true, message: '请输入融资目的', trigger: 'blur' }
-                ]
-            }
-        };
-    },
-    methods: {
-        submitForm() {
-            this.$refs.projectFormRef.validate((valid) => {
-                if (valid) {
-                    alert('表单提交成功!');
-                } else {
-                    console.log('表单验证失败!');
-                    return false;
-                }
-            });
-        }
+// 表单相关
+const projectFormRef = ref(null)
+const projectForm = reactive({
+    name: '',
+    funding: '',
+    purpose: ''
+})
+
+const formRules = reactive({
+    name: [{ required: true, message: '请输入项目名称', trigger: 'blur' }],
+    funding: [{ required: true, message: '请输入融资需求', trigger: 'blur' }],
+    purpose: [{ required: true, message: '请输入融资目的', trigger: 'blur' }]
+})
+
+// 上传选项卡
+const activeTab = ref('first')
+const uploadTabs = ref([
+    { label: '需求阶段材料', name: 'first', icon: '📂' },
+    { label: '解决方案材料', name: 'second', icon: '💡' },
+    { label: '商业模式材料', name: 'third', icon: '📈' },
+    { label: '增长阶段材料', name: 'fourth', icon: '🚀' },
+    { label: '壁垒阶段材料', name: 'fifth', icon: '🛡️' },
+    { label: '访谈材料', name: 'sixth', icon: '🎥' },
+    { label: '其他材料', name: 'seventh', icon: '📦' }
+])
+
+// 表格数据
+const columns = ref([
+    { prop: 'version', label: '版本' },
+    { prop: 'demand', label: '需求' },
+    { prop: 'solution', label: '解决方案' },
+    { prop: 'business', label: '商业模式' },
+    { prop: 'growth', label: '增长' },
+    { prop: 'barrier', label: '壁垒' }
+])
+
+// 颜色生成逻辑
+const colorPalette = [
+    '#E3F2FD', // 浅蓝
+    '#F3E5F5', // 浅紫
+    '#FBE9E7', // 浅橙
+    '#E8F5E9', // 浅绿
+    '#FFF8E1', // 浅黄
+    '#FFEBEE', // 浅红
+    '#E0F2F1', // 浅青
+    '#F5F5F5'  // 浅灰
+]
+
+const getParagraphStyle = (index) => {
+    return {
+        backgroundColor: colorPalette[index % colorPalette.length],
+        color: getTextColor(colorPalette[index % colorPalette.length])
     }
-};
+}
+
+// 自动计算合适的文字颜色（深色/浅色）
+const getTextColor = (bgColor) => {
+    const color = bgColor.replace('#', '')
+    const rgb = parseInt(color, 16)
+    const r = (rgb >> 16) & 0xff
+    const g = (rgb >> 8) & 0xff
+    const b = (rgb >> 0) & 0xff
+    const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
+    return luminance > 128 ? '#000000' : '#ffffff'
+}
+
+// 简化的数据结构（只需文字内容）
+const tableData = ref([
+    {
+        version: ['故事版'],
+        demand: [
+            '用户画像报告',
+            '市场调研数据',
+            '竞品分析报告'
+        ],
+        solution: [
+            '智能推荐解决方案',
+            '实时数据分析模块'
+        ],
+        business: ['SaaS订阅模式'],
+        growth: [
+            '月均30%用户增长',
+            '覆盖10+城市'
+        ],
+        barrier: ['专利技术壁垒']
+    },
+    {
+        version: ['取舍版'],
+        demand: [
+            '行为调研报告',
+            '用户访谈记录'
+        ],
+        solution: ['自动化处理方案'],
+        business: [
+            '按需付费模式',
+            '定制化收费方案'
+        ],
+        growth: ['年营收增长150%'],
+        barrier: [
+            '品牌认知优势',
+            '先发市场优势',
+            '技术专利布局'
+        ]
+    }
+])
+
+// 辅导建议
+const adviceList = ref([
+    '卖方可通过新建项目功能创建新项目信息，其中项目信息依托于企业信息展开（企业：项目1、项目2……）。',
+    '卖方新项目创建时即可关联上传企业资料和五步法思维框架材料创建初始版本（故事版）的五步法智导画布。',
+    '卖方可通过智导画布功能上传尽调材料，用于补充五步法智导画布的生成依据。',
+    '卖方可通过专家智囊专区上传专家访谈视频用于补充五步法智导画布的生成依据。',
+    '卖方智导画布可在线编辑、AI生成/优化/PPT生成功能。',
+    '所有用户可观看开放的专家访谈视频，使用AI对话、总结、PPT生成功能。'
+])
+
+// 方法
+const generateCanvas = () => {
+    projectFormRef.value.validate(valid => {
+        if (valid) {
+            ElMessage.success('画布生成成功！')
+        } else {
+            ElMessage.warning('请先完成必填项')
+        }
+    })
+}
+
+const saveProject = () => {
+    ElMessage.success('项目保存成功')
+}
+
+const generateAdvice = () => {
+    ElMessage.info('AI辅导意见生成中...')
+}
 </script>
 
 <style scoped>
 .business-project {
-    width: 100%;
-    min-height: 100vh;
     background-color: #f5f7fa;
+    min-height: 100vh;
     padding: 20px;
-    box-sizing: border-box;
 }
 
 .container {
-    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
+    font-size: 28px;
+    color: #303133;
+    margin-bottom: 8px;
 }
 
 .subtitle {
-    font-size: 14px;
-    color: #999;
-    margin-bottom: 20px;
+    color: #909399;
+    margin-bottom: 30px;
 }
 
 .project-form {
-    width: 50%;
+    margin-bottom: 40px;
+}
+
+.upload-cards {
+    margin: 30px 0;
+}
+
+.upload-card {
+    background: #f8f9fa;
+    border: 2px solid #ebeef5;
+    border-radius: 12px;
+    padding: 24px;
     margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.file-tabs {
-    margin-bottom: 20px;
+.upload-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    border-color: #409EFF;
 }
 
-.canvas-section {
-    margin-bottom: 20px;
+.upload-card.active-tab {
+    border-color: #409EFF;
+    background: #ecf5ff;
 }
 
-.canvas-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
 }
 
-.version-buttons .el-button {
-    background-color: #f0f2f5;
-    color: #666;
-    border: none;
-    margin-left: 5px;
-}
-
-.version-buttons .el-button.is-focused {
-    background-color: #e6f7ff;
-    color: #1890ff;
-}
-
-.canvas-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.canvas-card {
-    width: 19%;
-    background-color: #f9f9f9;
-    border-radius: 6px;
-    padding: 15px;
-    margin-bottom: 15px;
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.card-header h3 {
+.upload-card h3 {
     font-size: 16px;
-    color: #333;
+    color: #303133;
+    margin-bottom: 8px;
 }
 
-.card-body {
-    font-size: 14px;
-    line-height: 1.5;
-    color: #666;
-}
-
-.demand {
-    background-color: #f5f7ff;
-}
-
-.solution {
-    background-color: #fff0f0;
-}
-
-.business-model {
-    background-color: #f9f9f9;
-}
-
-.growth {
-    background-color: #e6f7e6;
-}
-
-.barrier {
-    background-color: #fff9e6;
-}
-
-.upload-section {
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px dashed #ddd;
-    border-radius: 4px;
-    background-color: #fff;
-}
-
-.upload-tip {
+.tip-text {
+    color: #909399;
     font-size: 12px;
-    color: #999;
-    margin-top: 5px;
+}
+
+.hover-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(64, 158, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    color: white;
+}
+
+.upload-card:hover .hover-mask {
+    opacity: 1;
+}
+
+.canvas-table {
+    margin: 30px 0;
+}
+
+/* 优化段落样式 */
+.paragraph {
+    margin: 4px 0;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1.4;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.paragraph:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.paragraph::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.paragraph:hover::after {
+    opacity: 1;
+}
+
+.cell-content {
+    padding: 8px 0;
 }
 
 .advice-section {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 24px;
     margin: 30px 0;
 }
 
 .advice-section h2 {
-    margin-bottom: 15px;
-    font-size: 18px;
-}
-
-.advice-content {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #666;
-    margin-bottom: 15px;
+    color: #303133;
+    margin-bottom: 16px;
 }
 
 .advice-content p {
-    margin-bottom: 8px;
+    color: #606266;
+    line-height: 1.8;
+    margin-bottom: 12px;
 }
 
 .advice-actions {
     display: flex;
     justify-content: flex-end;
-}
-
-.action-buttons {
-    display: flex;
-    justify-content: flex-end;
+    gap: 16px;
     margin-top: 20px;
 }
 
-.action-buttons .el-button {
-    background-color: #409EFF;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.action-buttons {
+    text-align: center;
+    margin-top: 40px;
 }
 
-.action-buttons .el-button:hover {
-    background-color: #66b1ff;
+.el-button--large {
+    padding: 12px 36px;
+    font-size: 16px;
 }
 </style>

@@ -1,45 +1,35 @@
 <template>
-    <div id="app">
-        <navbar />
-        <div class="main-content">
-        <div class="upper-layout">
-            <span class="gray-text">SPV概况</span>
-        </div>
-        <!-- 下布局 -->
-        <div class="lower-layout">
-            <el-card
-                v-for="(item, index) in dataList_1"
-                :key="index"
-                class="data-card-1"
-                shadow="always"
-            >
-                <div class="card-content">
-                <span class="title">{{ item.title }}</span>
-                <span class="value">{{ item.value }}</span>
-                <template v-if="item.subValue">
-                    <span class="sub-value">{{ item.subValue }}</span>
-                </template>
-                </div>
-            </el-card>
+  <div id="app">
+    <navbar style="background-color: black;" />
+    <div class="main-content">
+      <div class="upper-layout">
+        <span class="gray-text">SPV概况</span>
+      </div>
+      <!-- 下布局 -->
+      <div class="lower-layout">
+        <el-card v-for="(item, index) in dataList_1" :key="index" class="data-card-1" shadow="always">
+          <div class="card-content">
+            <span class="title">{{ item.title }}</span>
+            <span class="value">{{ item.value }}</span>
+            <template v-if="item.subValue">
+              <span class="sub-value">{{ item.subValue }}</span>
+            </template>
+          </div>
+        </el-card>
 
-            <el-card
-                v-for="(item, index) in dataList_2"
-                :key="index"
-                class="data-card-2"
-                shadow="always"
-            >
-                <div class="card-content">
-                <span class="title">{{ item.title }}</span>
-                <span class="value">{{ item.value }}</span>
-                <template v-if="item.subValue">
-                    <span class="sub-value">{{ item.subValue }}</span>
-                </template>
-                </div>
-            </el-card>
-        </div>
-        </div>
-            
+        <el-card v-for="(item, index) in dataList_2" :key="index" class="data-card-2" shadow="always">
+          <div class="card-content">
+            <span class="title">{{ item.title }}</span>
+            <span class="value">{{ item.value }}</span>
+            <template v-if="item.subValue">
+              <span class="sub-value">{{ item.subValue }}</span>
+            </template>
+          </div>
+        </el-card>
+      </div>
     </div>
+
+  </div>
 </template>
 
 <script setup>
@@ -56,7 +46,7 @@ const dataList_1 = ref([
   },
 ])
 
-  const dataList_2 = ref([
+const dataList_2 = ref([
 
   {
     title: '',
@@ -85,9 +75,8 @@ const dataList_1 = ref([
 
 
 <style scoped>
-
 .main-content {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 .upper-layout {
@@ -111,8 +100,8 @@ const dataList_1 = ref([
 }
 
 .data-card-1 {
-    background-color: rgb(97,120,246);
-    color: white;
+  background-color: rgb(97, 120, 246);
+  color: white;
 }
 
 .card-content {
@@ -134,6 +123,4 @@ const dataList_1 = ref([
   font-size: 12px;
   margin-top: 3px;
 }
-
-
 </style>

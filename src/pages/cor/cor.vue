@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <!-- 引入导航栏组件 -->
-        <navbar />
+        <navbar style="background-color: black;" />
         <!-- 左右分栏布局 -->
         <div class="main-content">
             <!-- 左边筛选栏 -->

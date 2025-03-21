@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-      <navbar />
+      <navbar style="background-color: black;" />
       <div class="main-content">
 
       <el-card class="company-info-card">
