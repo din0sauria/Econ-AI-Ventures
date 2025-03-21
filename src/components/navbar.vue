@@ -37,7 +37,7 @@
               <el-dropdown-item command="favorites"><el-icon>
                   <Star />
                 </el-icon>我的关注</el-dropdown-item>
-              <el-dropdown-item command="enterprise" class="green-bg"><el-icon>
+              <el-dropdown-item @click="$router.push('/company')"><el-icon>
                   <OfficeBuilding />
                 </el-icon>企业入驻</el-dropdown-item>
               <el-dropdown-item command="logout" divided><el-icon>
