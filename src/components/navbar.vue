@@ -3,7 +3,7 @@
     <el-menu mode="horizontal" class="nav-menu" :ellipsis="false" background-color="transparent" text-color="#fff"
       active-text-color="#fff">
       <!-- Logo部分 -->
-      <div class="logo-item" @click="$router.push('/home')">
+      <div class="logo-item" @click="$router.push('/home')" style="cursor: pointer;">
         <img src="@/assets/logo.svg" />
         <p class="brand-name">经智创投</p>
       </div>
