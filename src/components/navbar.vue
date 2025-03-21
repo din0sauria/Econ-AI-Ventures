@@ -12,10 +12,13 @@
       <div class="flex-grow"></div>
 
       <!-- 导航菜单项 -->
-      <el-menu-item index="project" class="nav-item">企业项目</el-menu-item>
+
       <el-menu-item index="expert" class="nav-item" @click="$router.push('/expert')">专家智萃</el-menu-item>
+      <!-- 修改 -->
+      <el-menu-item index="project" class="nav-item" @click="$router.push('/cor')">企业项目</el-menu-item>
+
       <el-menu-item index="fund" class="nav-item">私募智库</el-menu-item>
-      <el-menu-item index="chain" class="nav-item">全链智源</el-menu-item>
+      <el-menu-item index="chain" class="nav-item" @click="$router.push('/skv')">全链智源</el-menu-item>
 
       <!-- 登录按钮 -->
       <el-menu-item index="login" class="nav-item">
