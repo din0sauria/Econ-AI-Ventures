@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <!-- 引入导航栏组件 -->
-        <navbar />
+      <navbar style="background-color:black;"/>
         <!-- 左右分栏布局 -->
         <div class="main-content">
             <!-- 左边筛选栏 -->
@@ -97,7 +97,7 @@
 <script setup>
 import navbar from '@/components/navbar.vue';
 import { ref } from 'vue';
-import { ElCheckbox, ElCheckboxGroup, ElCollapse, ElCollapseItem } from 'element-plus';
+import { ElCheckbox, ElCheckboxGroup, ElCollapse, ElMessage, ElCollapseItem } from 'element-plus';
 
 import logo1 from '@/assets/cortab/cor1.png'; 
 const imageSrc1 = ref(logo1);
@@ -161,7 +161,7 @@ const allBoxes = [
     industry: '餐饮',
     introduction: '安徽老乡鸡餐饮有限公司是一家从事餐饮服务,食品销售,食品生产等业务的公司，成立于2003年10月22日。',
     operationScene: '安徽省合肥市蜀山区',
-    labelNumber: '1',
+    labelNumber: '2',
     investmentProjects: '有'
   },
   {
@@ -191,7 +191,7 @@ const allBoxes = [
     industry: '餐饮',
     introduction: '喜厨成立于2023年11月，总部位于广东惠州，是以"现包水饺+砂锅菜"为核心品类的品质餐饮品牌。通过精选食材与标准化工艺，打造手工水饺、特色砂锅等家庭化场景餐饮服务。',
     operationScene: '以惠州为起点，辐射珠三角地区。',
-    labelNumber: '4',
+    labelNumber: '6',
     investmentProjects: '有'
   },
   {
@@ -211,7 +211,7 @@ const allBoxes = [
     industry: '零售',
     introduction: '盒马成立于 2016 年，是阿里巴巴旗下以数据和技术驱动的新零售平台，融合了线上线下业务，提供生鲜食品、餐饮、日用品等多种商品和服务',
     operationScene: '主要在中国各大城市布局，包括北京、上海、广州、深圳等一二线城市，逐步向其他城市拓展。',
-    labelNumber: '5',
+    labelNumber: '3',
     investmentProjects: '有'
   }
 ];
@@ -222,6 +222,7 @@ const searchLen = ref(6);
 const handleButtonClick = () => {
   visibleBoxes.value = visibleBoxes.value.slice(0, 4);
   searchLen.value = 4;
+  ElMessage.success('筛选成功！');
 };
 
 
@@ -271,7 +272,7 @@ const isCollapseItemActive = (index) => {
 .right-column-mid {
     background-color: #ffffff;
     margin-top: -20px;
-    text-emphasis-color: blue;
+    text-emphasis-color: #3761F5;
     color: black;
     padding: 20px;
     font-size: small;
@@ -284,7 +285,8 @@ const isCollapseItemActive = (index) => {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 70%;
-    height: 46px;
+    height: 40px;
+    box-shadow: inset 1px 1px 6px 4px #61a1f5;
     background-color: #3761F5;
     color: white;
     border: none;
@@ -292,12 +294,21 @@ const isCollapseItemActive = (index) => {
     padding: 12px 24px;
     font-size: 18px;
     margin-left: 40px;
+    transition: background-color 0.15s ease;
+}
+
+.custom-button:hover {
+    background-color: #5e80fa;
+    color: white;
+
+    transition: background-color 0.15s ease;
 }
 
 .common-rectangle {
     display: inline-block;
-    width: 8px;
-    height: 20px;
+    height: 50px;
+    width: 6px;
+    height: 50px;
     margin-right: 8px;
     background-color: white;
     vertical-align: middle;
@@ -305,16 +316,23 @@ const isCollapseItemActive = (index) => {
 }
 
 .blue-rectangle {
-    background-color: blue;
+    height: 50px;
+    width: 6px;
+    background-color: #3761F5;
+    transition: background-color 0.3s ease;
 }
 
 .common-text {
-    margin-left: 60px;
+    margin-left: 80px;
+    transition: margin-left 0.3s ease;
+    font-weight: 500;
+    
+    transition: color 0.3s ease;
 }
 
 .blue-text {
-    margin-left: 60px;
-    color: blue;
+    margin-left: 80px;
+    color: #3761F5;
     transition: color 0.3s ease;
 }
 
@@ -333,10 +351,21 @@ const isCollapseItemActive = (index) => {
 }
 
 .single-line-checkbox {
-    margin-left: 20px;
+    margin-left: 30px;
     display: block;
+    color: black;
+    font-size: smaller;
 }
 
+.single-line-checkbox .el-checkbox__input .el-checkbox__inner {
+    background-color: #f0f0f0; /* 可根据需求修改颜色 */
+}
+
+/* 选中状态的复选框背景颜色 */
+.single-line-checkbox .el-checkbox__input.is-checked .el-checkbox__inner {
+    background-color: #409eff; /* 可根据需求修改颜色 */
+    border-color: #409eff;
+}
 
 /* 以下为搜索框 */
 .search-box {
@@ -375,8 +404,9 @@ input {
 .info-box {
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 15px;
-  margin: 10px;
+  padding:20px;
+  margin-left: 10px;
+  margin-bottom: -10px;
   background-color: #fff; /* 框内背景色 */
 }
 .top-section {
@@ -392,8 +422,8 @@ input {
   margin-right: 10px;
 }
 .logo {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 115px;
+  max-height: 115px;
 }
 .right-section {
   flex: 1;
@@ -443,14 +473,15 @@ input {
 }
 .circle-label {
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
   border: 2px solid #99ccff; /* 边框颜色 */
   border-radius: 50%; /* 圆形 */
   text-align: center;
-  line-height: 25px;
+  line-height: 18px;
   color: #99ccff; /* 文字颜色 */
-  margin-right: 5px;
+  margin-right: 7px;
 }
 .introduction-section {
     margin-top: 3px;
@@ -466,5 +497,11 @@ input {
     color: #3761F5;
     transition: color 0.2s ease;
 }
+
+.investment-section {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
 
 </style>

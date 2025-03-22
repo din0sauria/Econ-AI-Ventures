@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-      <navbar />
+      <navbar style="background-color:black;"/>
       <div class="main-content">
 
       <el-card class="company-info-card">
@@ -282,6 +282,7 @@ const activeTab = ref('business');
     background-color: #f0f0f0;
 }
   .company-info-card {
+    width: 100%;
     padding: 20px;
   }
   .header {

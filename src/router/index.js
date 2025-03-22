@@ -7,6 +7,8 @@ import Cor from '@/pages/cor/cor.vue'
 import Corhome from '@/pages/corhome/corhome.vue'
 import Skv from '@/pages/skv/skv.vue'
 import Skvhome from '@/pages/skvhome/skvhome.vue'
+import Meet from '@/pages/meet/meet.vue'
+import Proj from '@/pages/proj/proj.vue'
 
 
 const router = createRouter({
@@ -46,6 +48,14 @@ const router = createRouter({
     {
       path: '/skvhome',
       component: Skvhome,
+    },
+    {
+      path: '/meet',
+      component: Meet,
+    },
+    {
+      path: '/proj',
+      component: Proj,
     }
   ],
 })

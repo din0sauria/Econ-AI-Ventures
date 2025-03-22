@@ -17,7 +17,7 @@
       <!-- 修改 -->
       <el-menu-item index="project" class="nav-item" @click="$router.push('/cor')">企业项目</el-menu-item>
 
-      <el-menu-item index="fund" class="nav-item">私募智库</el-menu-item>
+      <el-menu-item index="fund" class="nav-item" @click="$router.push('/meet')">私募智库</el-menu-item>
       <el-menu-item index="chain" class="nav-item" @click="$router.push('/skv')">全链智源</el-menu-item>
 
       <!-- 登录按钮 -->
