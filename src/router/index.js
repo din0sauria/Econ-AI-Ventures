@@ -10,7 +10,7 @@ import Skv from '@/pages/skv/skv.vue'
 import Skvhome from '@/pages/skvhome/skvhome.vue'
 import Meet from '@/pages/meet/meet.vue'
 import Proj from '@/pages/proj/proj.vue'
-
+import Zhihui from '@/pages/zhihui/zhihui.vue'
 import Company from '@/pages/company/company.vue'
 
 const router = createRouter({
@@ -66,6 +66,10 @@ const router = createRouter({
     {
       path: '/newproj',
       component: Newproj,
+    },
+    {
+      path: '/zhihui',
+      component: Zhihui,
     },
   ],
 })
