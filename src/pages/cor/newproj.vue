@@ -26,25 +26,34 @@
             <!-- 文件上传卡片区域 -->
             <div class="upload-cards">
                 <el-row :gutter="20">
-                    <el-col v-for="(tab, index) in uploadTabs" :key="index" :xs="24" :sm="12" :md="8" :lg="6">
-                        <div class="upload-card" :class="{ 'active-tab': activeTab === tab.name }"
-                            @click="activeTab = tab.name">
-                            <div class="card-icon">{{ tab.icon }}</div>
-                            <h3>{{ tab.label }}</h3>
-                            <p class="tip-text">点击上传或拖拽文件至此</p>
-                            <div class="hover-mask">
-                                <el-icon :size="32"><upload-filled /></el-icon>
+                    <el-col v-for="(tab, index) in uploadTabs" :key="index" :xs="12" :sm="6" :md="4" :lg="3">
+                        <el-upload :action="uploadUrl" :limit="1" :file-list="form[index]"
+                            :on-change="(file, files) => handleUploadChange(files, index)"
+                            :on-remove="() => handleRemove(index)">
+                            <div class="upload-card" :class="{ 'active-tab': activeTab === tab.name }"
+                                @click="activeTab = tab.name">
+
+                                <div class="card-icon">{{ tab.icon }}</div>
+                                <h3>{{ tab.label }}</h3>
+                                <p class="tip-text">点击上传文件</p>
+                                <div class="hover-mask">
+                                    <el-icon :size="32"><upload-filled /></el-icon>
+                                </div>
+
                             </div>
-                        </div>
+                        </el-upload>
+                        <div v-if="form[index] != ''">{{ form[index][0].name }}</div>
                     </el-col>
+
                 </el-row>
             </div>
+            <h3>五步法画布</h3>
 
             <!-- 五步法画布表格 -->
             <div class="canvas-table">
-                <el-table :data="tableData" border style="width: 100%">
+                <el-table v-if="form[4] != ''" :data="tableData" border style="width: 100%">
                     <el-table-column v-for="(col, index) in columns" :key="index" :prop="col.prop" :label="col.label"
-                        width="180">
+                        width="200">
                         <template #default="{ row }">
                             <div class="cell-content">
                                 <div v-for="(item, i) in row[col.prop]" :key="i" class="paragraph"
@@ -58,6 +67,23 @@
                         </template>
                     </el-table-column>
                 </el-table>
+                <el-table v-else :data="tableData1" border style="width: 100%">
+                    <el-table-column v-for="(col, index) in columns" :key="index" :prop="col.prop" :label="col.label"
+                        width="200">
+                        <template #default="{ row }">
+                            <div class="cell-content">
+                                <div v-for="(item, i) in row[col.prop]" :key="i" class="paragraph"
+                                    :style="getParagraphStyle(i)">
+                                    {{ item || '-- 待补充内容 --' }}
+                                </div>
+                                <div v-if="!row[col.prop]?.length" class="paragraph">
+                                    -- 待补充内容 --
+                                </div>
+                            </div>
+                        </template>
+                    </el-table-column>
+                </el-table>
+
             </div>
             <!-- 辅助建议区域 -->
             <div class="advice-section">
@@ -81,7 +107,7 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
-import { ElMessage } from 'element-plus'
+import { ElMessage, ElUpload } from 'element-plus'
 import { UploadFilled } from '@element-plus/icons-vue'
 import Navbar from '@/components/navbar.vue'
 
@@ -92,6 +118,7 @@ const projectForm = reactive({
     funding: '',
     purpose: ''
 })
+const form = ref(['', '', '', '', '', '', ''])
 
 const formRules = reactive({
     name: [{ required: true, message: '请输入项目名称', trigger: 'blur' }],
@@ -108,8 +135,36 @@ const uploadTabs = ref([
     { label: '增长阶段材料', name: 'fourth', icon: '🚀' },
     { label: '壁垒阶段材料', name: 'fifth', icon: '🛡️' },
     { label: '访谈材料', name: 'sixth', icon: '🎥' },
-    { label: '其他材料', name: 'seventh', icon: '📦' }
 ])
+
+// 增加上传相关逻辑
+const uploadUrl = ref('https://jsonplaceholder.typicode.com/posts/') // 替换为实际接口地址
+const fileLists = ref({}) // 存储已上传文件列表
+
+const beforeUpload = (file) => {
+    const isLt10M = file.size / 1024 / 1024 < 10
+
+    if (!isLt10M) {
+        ElMessage.error('文件大小不能超过10MB')
+        return false
+    }
+    return true
+}
+
+
+// 处理文件上传
+const handleUploadChange = (files, field) => {
+    if (files.length > 0) {
+        form.value[field] = files
+    }
+    console.log(form.value)
+}
+
+// 删除文件
+const handleRemove = (field) => {
+    form.value[field] = ''
+}
+
 
 // 表格数据
 const columns = ref([
@@ -151,45 +206,138 @@ const getTextColor = (bgColor) => {
     return luminance > 128 ? '#000000' : '#ffffff'
 }
 
-// 简化的数据结构（只需文字内容）
+// 简化的数据结构
 const tableData = ref([
     {
         version: ['故事版'],
         demand: [
             '用户画像报告',
-            '市场调研数据',
-            '竞品分析报告'
+            '用户行为调研报告',
+            '用户满意度调查报告'
         ],
         solution: [
-            '智能推荐解决方案',
-            '实时数据分析模块'
+            '产品定位文档',
+            '服务流程设计文档'
         ],
-        business: ['SaaS订阅模式'],
+        business: [
+            '业务流程文档',
+            '单店运营手册',
+            '商圈分析报告'
+        ],
         growth: [
-            '月均30%用户增长',
-            '覆盖10+城市'
+            '市场推广策略报告',
+            '销售转化漏斗分析',
+            '客户忠诚度计划'
         ],
-        barrier: ['专利技术壁垒']
+        barrier: [
+            '品牌建设文档',
+            '供应链管理流程',
+            '技术研发报告',
+            '人才培养与发展计划'
+        ]
     },
     {
         version: ['取舍版'],
         demand: [
-            '行为调研报告',
-            '用户访谈记录'
+            '用户访谈笔记',
+            '用户消费日记',
+            '用户投诉记录',
+            '竞争对手用户调研'
         ],
-        solution: ['自动化处理方案'],
+        solution: [
+            '用户反馈报告',
+            '服务案例分析',
+            '营销活动效果评估'
+        ],
         business: [
-            '按需付费模式',
-            '定制化收费方案'
+            '用户故事',
+            '店长访谈记录',
+            '商圈调研访谈',
+            '骑手反馈记录'
         ],
-        growth: ['年营收增长150%'],
+        growth: [
+            '用户获取渠道分析',
+            '销售案例分析',
+            '客户反馈与改进措施',
+            '接受度调查',
+            '风险评估报告'
+        ],
         barrier: [
-            '品牌认知优势',
-            '先发市场优势',
-            '技术专利布局'
+            '用户品牌认知调研',
+            '供应商访谈记录',
+            '技术应用案例分析',
+            '员工满意度调查',
+            '市场反馈报告',
+            '竞争对手分析报告'
+        ]
+    },
+    {
+        version: ['定量版'],
+        demand: [
+            '用户数据统计',
+            '消费频次统计',
+            '满意度评分数据',
+            '非用户比例统计'
+        ],
+        solution: [
+            '产品销售数据',
+            '服务满意度评分',
+            '营销渠道效果数据'
+        ],
+        business: [
+            '运营效率指标',
+            '单店盈利能力数据',
+            '商圈销售数据对比',
+            '配送准时率'
+        ],
+        growth: [
+            '新用户获取数据',
+            '转化率统计',
+            '客户复购率数据',
+            '模式效果数据',
+            '市场潜力评估数据'
+        ],
+        barrier: [
+            '品牌知名度和美誉度数据',
+            '供应链成本数据',
+            '员工流失率数据',
+            '增值服务使用率',
+            '竞争优势指标对比'
         ]
     }
-])
+]);
+// 没上传完
+const tableData1 = ref([
+    {
+        version: ['故事版'],
+        demand: [
+            '用户画像报告',
+            '用户行为调研报告',
+            '用户满意度调查报告'
+        ],
+        solution: [
+            '产品定位文档',
+            '服务流程设计文档'
+        ],
+        business: [
+            '业务流程文档',
+            '单店运营手册',
+            '商圈分析报告'
+        ],
+        growth: [
+            '市场推广策略报告',
+            '销售转化漏斗分析',
+            '客户忠诚度计划'
+        ],
+        barrier: [
+            '品牌建设文档',
+            '供应链管理流程',
+            '技术研发报告',
+            '人才培养与发展计划'
+        ]
+    }
+]);
+
 
 // 辅导建议
 const adviceList = ref([
