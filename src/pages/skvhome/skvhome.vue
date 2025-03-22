@@ -1,141 +1,110 @@
 <template>
-    <div id="app">
-      <navbar style="background-color:black;"/>
-        <div class="main-content">
-          
-          <div class="header-layout">
-            <img :src="dundunSrc" alt="Logo" class="dundun-class" />
-            <img :src="spvSrc" alt="Logo" class="spv-class" />
-          </div>
+  <div id="app">
+    <navbar style="background-color:black;" />
+    <div class="main-content">
 
-          <div class="main-layout"> 
-          
-          <div class="top-box">
-              <span class="gray-text">SPV概况</span>
-          </div>
-          
+      <div class="header-layout">
+        <img :src="dundunSrc" alt="Logo" class="dundun-class" />
+        <img :src="spvSrc" alt="Logo" class="spv-class" />
+      </div>
+
+      <div class="main-layout">
+
+        <div class="top-box">
+          <span class="gray-text">SPV概况</span>
+        </div>
+
 
         <div class="mid-box">
-            <el-card
-                v-for="(item, index) in dataList_1"
-                :key="index"
-                class="data-card-1"
-                shadow="always"
-            >
-                <div class="card-content">
-                <span class="title-0">{{ item.title }}</span>
-                <span class="value">{{ item.value }}</span>
-                <span class="sub-value">份额总数（份）<p>7,000,000</p></span>
-                
-                </div>
-            </el-card>
+          <el-card v-for="(item, index) in dataList_1" :key="index" class="data-card-1" shadow="always">
+            <div class="card-content">
+              <span class="title-0">{{ item.title }}</span>
+              <span class="value">{{ item.value }}</span>
+              <span class="sub-value">份额总数（份）<p>7,000,000</p></span>
 
-            <el-card
-                v-for="(item, index) in dataList_2"
-                :key="index"
-                class="data-card-2"
-                shadow="always"
-            >
-                <div class="card-content">
-                <span class="title">{{ item.title }}</span>
-                <span class="value-1">{{ item.value }} 
-                  <p class="black-sub-text">{{ item.subLevel }}</p>
-                  <el-button class="custom-button-2-3">{{item.tag}}</el-button>
-                </span>
-                
+            </div>
+          </el-card>
+
+          <el-card v-for="(item, index) in dataList_2" :key="index" class="data-card-2" shadow="always">
+            <div class="card-content">
+              <span class="title">{{ item.title }}</span>
+              <span class="value-1">{{ item.value }}
+                <p class="black-sub-text">{{ item.subLevel }}</p>
+                <el-button class="custom-button-2-3">{{ item.tag }}</el-button>
+              </span>
+
+              <div class="divider"></div>
+              <span class="sub-value-1">{{ item.subValue }}<p>{{ item.subLevel }}</p>
+                <div class="gray-sub-text">{{ item.subTag }}</div>
+              </span>
+
+            </div>
+          </el-card>
+
+          <el-card v-for="(item, index) in dataList_3" :key="index" class="data-card-3" shadow="always">
+            <div class="card-content-double">
+              <div class="card-content">
+                <span class="title">{{ item.title1 }}</span>
+                <span class="value-1">{{ item.value1 }}</span>
                 <div class="divider"></div>
-                <span class="sub-value-1">{{ item.subValue }}<p>{{item.subLevel}}</p> <div class="gray-sub-text">{{item.subTag}}</div></span>
-                
-                </div>
-            </el-card>
-
-            <el-card
-                v-for="(item, index) in dataList_3"
-                :key="index"
-                class="data-card-3"
-                shadow="always"
-            >
-                <div class="card-content-double">
-                  <div class="card-content">
-                    <span class="title">{{ item.title1 }}</span>
-                    <span class="value-1">{{ item.value1 }}</span>
-                    <div class="divider"></div>
-                    <el-button class="custom-button-4">{{item.level1}}</el-button>
-                    </div>
-                  <div class="card-content">
-                    <span class="title">{{ item.title2 }}</span>
-                    <span class="value-1">{{ item.value2 }}</span>
-                    <div class="divider"></div>
-                    <el-button class="custom-button-4">{{item.level2}}</el-button>
-                    </div>
-                  </div>
-            </el-card>
-
-            
-            <el-card
-                v-for="(item, index) in dataList_4"
-                :key="index"
-                class="data-card-4"
-                shadow="always"
-            >
-                <div class="card-content">
-                <span class="title">{{ item.title }}</span>
-                <span class="value-2">{{ item.value }}<p>{{item.level}}</p></span>
+                <el-button class="custom-button-4">{{ item.level1 }}</el-button>
+              </div>
+              <div class="card-content">
+                <span class="title">{{ item.title2 }}</span>
+                <span class="value-1">{{ item.value2 }}</span>
                 <div class="divider"></div>
-                </div>
-            </el-card>
+                <el-button class="custom-button-4">{{ item.level2 }}</el-button>
+              </div>
+            </div>
+          </el-card>
+
+
+          <el-card v-for="(item, index) in dataList_4" :key="index" class="data-card-4" shadow="always">
+            <div class="card-content">
+              <span class="title">{{ item.title }}</span>
+              <span class="value-2">{{ item.value }}<p>{{ item.level }}</p></span>
+              <div class="divider"></div>
+            </div>
+          </el-card>
         </div>
 
 
         <div class="gap-box">
-              <span class="gray-text">投资人份额估值概况</span>
+          <span class="gray-text">投资人份额估值概况</span>
         </div>
 
 
-          <el-table :data="tableData" 
-          class="guzhi-style"  >
-            <el-table-column 
-              v-for="(column, index) in tableColumns" 
-              :key="index" 
-              :prop="column.prop" 
-              :label="column.label"
-              :align="'center'"
-              >
-            </el-table-column>
-          </el-table>
-        
-          <div class="gap-box-2">
-              <span class="colorful-text">根据SPV预设的分账频率，假设此Repo是月底设立，设立后3个月每个月月底均为检视点，具体估值过程如下：</span>
-              <span class="colorful-text-2">每期取实际摊销记账金额与检视减记记账金额的较小值，此合约最终得到的每月估值为：</span>
+        <el-table :data="tableData" class="guzhi-style">
+          <el-table-column v-for="(column, index) in tableColumns" :key="index" :prop="column.prop"
+            :label="column.label" :align="'center'">
+          </el-table-column>
+        </el-table>
+
+        <div class="gap-box-2">
+          <span class="colorful-text">根据SPV预设的分账频率，假设此Repo是月底设立，设立后3个月每个月月底均为检视点，具体估值过程如下：</span>
+          <span class="colorful-text-2">每期取实际摊销记账金额与检视减记记账金额的较小值，此合约最终得到的每月估值为：</span>
         </div>
 
-   
-        <el-table :data="tableData_2" 
-          class="guzhi-style-2"  >
-            <el-table-column 
-              v-for="(column, index) in tableColumns_2" 
-              :key="index" 
-              :prop="column.prop" 
-              :label="column.label"
-              :align="'center'"
-              >
-            </el-table-column>
-          </el-table>
 
-          <div class="gap-box">
-              <span class="gray-text">脑图</span>
+        <el-table :data="tableData_2" class="guzhi-style-2">
+          <el-table-column v-for="(column, index) in tableColumns_2" :key="index" :prop="column.prop"
+            :label="column.label" :align="'center'">
+          </el-table-column>
+        </el-table>
+
+        <div class="gap-box">
+          <span class="gray-text">脑图</span>
         </div>
 
-          <div class="down-box">
-            <img :src="brainSrc" alt="Brain" class="brain-class" />
-          </div>
-        
-      </div>        
+        <div class="down-box">
+          <img :src="brainSrc" alt="Brain" class="brain-class" />
         </div>
-            
+
+      </div>
     </div>
 
   </div>
+
 </template>
 
 <script setup>
@@ -177,9 +146,9 @@ const dataList_2 = ref([
     subLevel: '元',
     subTag: '实际平均'
   }
-  ])
+])
 
-  const dataList_3 = ref([
+const dataList_3 = ref([
   {
     title1: '市收比',
     value1: '10X',
@@ -245,7 +214,7 @@ const tableColumns_2 = [
 
 
 const tableData = ref([
-{
+  {
     'SPV分红频率': '每自然日',
     '买入份额价格（份额）': '180元',
     '约定收益率（月平息）': '1%',
@@ -285,7 +254,7 @@ const tableColumns = ref([
 }
 
 .top-box {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .gap-box {
@@ -313,7 +282,7 @@ const tableColumns = ref([
   font-size: 10px;
 }
 
-.colorful-text-2{
+.colorful-text-2 {
   color: #FFC994;
   font-size: 10px;
   display: inline;
@@ -331,9 +300,9 @@ const tableColumns = ref([
 
 .data-card-1 {
   width: 18%;
-    background-color: rgb(97,120,246);
-    color: white;
-    box-shadow: inset 1px 1px 6px 10px rgb(156, 164, 204);
+  background-color: rgb(97, 120, 246);
+  color: white;
+  box-shadow: inset 1px 1px 6px 10px rgb(156, 164, 204);
 }
 
 .data-card-3 {
@@ -347,13 +316,15 @@ const tableColumns = ref([
 }
 
 .card-content-double {
-  display: grid; /* 将大容器设置为grid布局 */
-  grid-template-columns: 1fr 1fr; /* 定义两列，每列各占一半空间 */
+  display: grid;
+  /* 将大容器设置为grid布局 */
+  grid-template-columns: 1fr 1fr;
+  /* 定义两列，每列各占一半空间 */
 }
 
 .card-content {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
 }
 
 .title-0 {
@@ -375,37 +346,37 @@ const tableColumns = ref([
 }
 
 .sub-value {
-            display: inline-flex;
-            align-items: center;
+  display: inline-flex;
+  align-items: center;
   font-size: 10px;
-  
+
 }
 
-.sub-value p{
+.sub-value p {
   font-size: 15px;
 
-            margin-left: 5px;
+  margin-left: 5px;
 }
 
 .sub-value-1 {
   color: #3761F5;
   font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            margin-bottom: -10px;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: -10px;
   font-size: 15px;
-  
+
 }
 
-.sub-value-1 p{
+.sub-value-1 p {
   color: #3761F5;
   font-size: 10px;
-            margin-left: 5px;
+  margin-left: 5px;
 }
 
-.value-1{
-            display: inline-flex;
-            align-items: center;
+.value-1 {
+  display: inline-flex;
+  align-items: center;
   font-size: 20px;
   font-weight: bold;
   color: #000000;
@@ -418,9 +389,9 @@ const tableColumns = ref([
   font-size: 10px;
 }
 
-.value-2{
-            display: inline-flex;
-            align-items: center;
+.value-2 {
+  display: inline-flex;
+  align-items: center;
   font-size: 20px;
   font-weight: bold;
   color: #FF8D1A;
@@ -436,24 +407,34 @@ const tableColumns = ref([
 }
 
 .custom-button-2-3 {
-  background-color: white; /* 白色背景 */
-  color: #63D2B4; /* 绿色字体 */
-  border: 1px solid #63D2B4; /* 绿色边框 */
-  border-radius: 4px; /* 圆角 */
-  height:18px;
+  background-color: white;
+  /* 白色背景 */
+  color: #63D2B4;
+  /* 绿色字体 */
+  border: 1px solid #63D2B4;
+  /* 绿色边框 */
+  border-radius: 4px;
+  /* 圆角 */
+  height: 18px;
   margin-left: 20px;
   width: 50px;
-  font-size: 10px; /* 调整字体大小，使其变小 */
+  font-size: 10px;
+  /* 调整字体大小，使其变小 */
 }
 
 .custom-button-4 {
-  background-color: white; /* 白色背景 */
-  color: #63D2B4; /* 绿色字体 */
-  border: 1px solid #63D2B4; /* 绿色边框 */
-  border-radius: 4px; /* 圆角 */
-  height:18px;
+  background-color: white;
+  /* 白色背景 */
+  color: #63D2B4;
+  /* 绿色字体 */
+  border: 1px solid #63D2B4;
+  /* 绿色边框 */
+  border-radius: 4px;
+  /* 圆角 */
+  height: 18px;
   width: 50px;
-  font-size: 10px; /* 调整字体大小，使其变小 */
+  font-size: 10px;
+  /* 调整字体大小，使其变小 */
 }
 
 .dundun-class {
@@ -469,22 +450,26 @@ const tableColumns = ref([
 }
 
 .gray-sub-text {
- font-size: 12px;
- margin-left: 40px;
- color: #A6A6A6;
+  font-size: 12px;
+  margin-left: 40px;
+  color: #A6A6A6;
 }
 
 .black-sub-text {
- font-size: 12px;
- margin-left: 10px;
- color: black;
+  font-size: 12px;
+  margin-left: 10px;
+  color: black;
 }
 
 .divider {
-  width: 100%; /* 横线宽度与容器同宽 */
-  height: 2px; /* 横线高度 */
-  background-color: #E5E5E5; /* 横线颜色，可按需调整 */
-  margin: 6px 0; /* 上下外边距，调整横线与div的间距 */
+  width: 100%;
+  /* 横线宽度与容器同宽 */
+  height: 2px;
+  /* 横线高度 */
+  background-color: #E5E5E5;
+  /* 横线颜色，可按需调整 */
+  margin: 6px 0;
+  /* 上下外边距，调整横线与div的间距 */
 }
 
 
@@ -492,6 +477,7 @@ const tableColumns = ref([
   color: #000;
   font-size: small;
 }
+
 /* 表格内容样式 */
 ::v-deep .el-table__body td {
   color: #3761F5;
@@ -502,21 +488,19 @@ const tableColumns = ref([
   background-color: white;
   width: 95%;
   box-shadow: inset 1px 1px 6px 10px rgb(156, 164, 204);
-} 
+}
 
 ::v-deep .guzhi-style-2 {
   background-color: white;
   width: 95%;
   box-shadow: inset 4px 1px 6px 10px rgb(156, 164, 204);
-} 
+}
 
 .down-box {
   width: 95%;
   padding: 10px;
   background-color: white;
   text-align: center
-  /* box-shadow: inset 1px 1px 6px 10px rgb(156, 164, 204); */
-} 
-
-
+    /* box-shadow: inset 1px 1px 6px 10px rgb(156, 164, 204); */
+}
 </style>
