@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "element-plus": "^2.9.6",
+    "element-plus-china-area": "^1.0.4",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },

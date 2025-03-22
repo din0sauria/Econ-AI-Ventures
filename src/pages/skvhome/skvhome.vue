@@ -134,6 +134,8 @@
         </div>
             
     </div>
+
+  </div>
 </template>
 
 <script setup>
@@ -155,7 +157,7 @@ const dataList_1 = ref([
   },
 ])
 
-  const dataList_2 = ref([
+const dataList_2 = ref([
 
   {
     title: '份额价格（元/份额）',
@@ -267,9 +269,8 @@ const tableColumns = ref([
 
 
 <style scoped>
-
 .main-content {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 .header-layout {
