@@ -165,6 +165,16 @@ const allBoxes = [
     investmentProjects: '有'
   },
   {
+    imageSrc: imageSrc5,
+    companyName: '中国邮政集团有限公司',
+    tags: ['标签1', '标签2'],
+    industry: '服务',
+    introduction: '中国邮政集团有限公司是依照《中华人民共和国公司法》组建的国有独资公司，由中央管理，是国有重要骨干企业。主要从事邮件寄递、邮政汇兑和邮政储蓄等业务，同时经营邮票发行业务等。',
+    operationScene: '立足国内，覆盖全国城乡。',
+    labelNumber: '7',
+    investmentProjects: '有'
+  },
+  {
     imageSrc: imageSrc2,
     companyName: '海底捞国际控股有限公司',
     tags: ['标签1', '标签2'],
@@ -195,16 +205,6 @@ const allBoxes = [
     investmentProjects: '无'
   },
   {
-    imageSrc: imageSrc5,
-    companyName: '中国邮政集团有限公司',
-    tags: ['标签1', '标签2'],
-    industry: '服务',
-    introduction: '中国邮政集团有限公司是依照《中华人民共和国公司法》组建的国有独资公司，由中央管理，是国有重要骨干企业。主要从事邮件寄递、邮政汇兑和邮政储蓄等业务，同时经营邮票发行业务等。',
-    operationScene: '立足国内，覆盖全国城乡。',
-    labelNumber: '7',
-    investmentProjects: '有'
-  },
-  {
     imageSrc: imageSrc6,
     companyName: '上海盒马网络科技有限公司',
     tags: ['标签1', '标签2'],
@@ -220,7 +220,12 @@ const visibleBoxes = ref(allBoxes);
 const searchLen = ref(6);
 
 const handleButtonClick = () => {
-  visibleBoxes.value = visibleBoxes.value.slice(0, 4);
+    visibleBoxes.value = [
+        visibleBoxes.value[0], // 第1个
+        visibleBoxes.value[2], // 第3个
+        visibleBoxes.value[3], // 第4个
+        visibleBoxes.value[4], // 第5个
+        ];
   searchLen.value = 4;
   ElMessage.success('筛选成功！');
 };

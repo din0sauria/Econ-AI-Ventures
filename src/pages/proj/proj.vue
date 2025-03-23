@@ -1,20 +1,24 @@
 <template>
     <div id="app">
       <navbar style="background-color:black;"/>
-        <div class="main-content-2">
 
+      <div class="main-content-3">
             <div class="logo-and-name">
                 <img :src="imageSrc1" alt="公司logo" class="company-logo" />
                 <div class="name-without-logo">
                     <span class="company-name">安徽老乡鸡餐饮有限公司</span>
-                    <span class="proj-name">项目：老乡鸡</span>
+                    <span class="proj-name">项目：老乡鸡餐饮</span>
                 </div>
             </div>
+            </div>
+            <div class="main-content-2">
 
             <div class="text-box">
                 <div class="text-title">
                     项目融资需求
                 </div>
+                
+              <div class="divider"></div>
                 <div class="text-contain">
                     2023年10月报道称公司拟融资12亿元，用于老乡鸡华东总部建设、新增餐饮门店建设和数据信息化升级建设。其中，用于门店扩张的金额将达到5.1亿元，高于其他项目；3年内扩张700家直营门店，则计划使用4.75亿元。
                 </div>
@@ -27,21 +31,22 @@
                 <div class="text-title">
                     项目融资目的
                 </div>
+                <div class="divider"></div>
                 <div class="text-contain">
-                    （1）快速扩张与加盟店数量增长
+                    <div class="jiacu">（1）快速扩张与加盟店数量增长</div>
                 </div>
                 <div class="text-contain">
 老乡鸡作为一家以鸡汤及鸡类菜品为核心的中式快餐品牌，其融资的一个重要目的就是为了快速扩张。通过融资，老乡鸡可以获得更多的资金支持，从而加速开设直营店和加盟店的速度。例如，老乡鸡在招股书中提到，希望通过上市融资来获取快速扩张的资本，进一步扩大其加盟店的数量。这种扩张策略有助于提升品牌的市场占有率和影响力。
 </div>
-<div class="text-contain">（2）优化供应链与提升运营效率
+<div class="text-contain"><div class="jiacu">（2）优化供应链与提升运营效率</div>
 </div>
 <div class="text-contain">融资后，老乡鸡还可以将部分资金用于优化供应链和提升运营效率。这包括加强养鸡、中央厨房和餐饮服务等全产业链的布局，以及提升冷链物流车队等基础设施的建设。这些措施有助于降低运营成本，提高产品质量和服务水平，从而增强品牌的竞争力。
 </div>
-<div class="text-contain">（3）产品品类优化与满足消费者需求
+<div class="text-contain"><div class="jiacu">（3）产品品类优化与满足消费者需求</div>
 </div>
 <div class="text-contain">老乡鸡在进军一线城市后，不断优化和扩大产品品类，试图以多样化的中式餐饮品类满足消费者的需求。融资可以为这种产品品类的优化提供资金支持，帮助老乡鸡更好地适应市场变化和消费者需求的变化。
 </div>
-<div class="text-contain">（4）品牌建设与市场推广
+<div class="text-contain"><div class="jiacu">（4）品牌建设与市场推广</div>
 </div>
 <div class="text-contain">作为区域性品牌，老乡鸡需要思考如何将流量转变为用户并提高其忠诚度，在安徽省外市场仍需进一步培养消费者的品牌认知及认可度。融资后，老乡鸡可以将部分资金用于品牌推广和市场营销活动，提升品牌的知名度和美誉度。这有助于吸引更多的消费者关注并选择老乡鸡作为他们的快餐品牌。
                 </div>
@@ -51,6 +56,7 @@
                 <div class="text-title">
                     项目聚焦阶段：壁垒
                 </div>
+                <div class="divider"></div>
                 <div class="text-contain">
                     老乡鸡目前的融资目的聚焦于构建竞争壁垒。</div>
                 <div class="text-contain">
@@ -212,7 +218,7 @@ const quantitativeData = [
   },
 ];
 
-const currentVersion = ref('quantitative');
+const currentVersion = ref('story');
 
 
 import huabu1 from '@/assets/projtab/huabu1.png';
@@ -239,6 +245,20 @@ const getCurrentTableData = () => {
     padding: 10px 40px 10px 40px;
 }
 
+
+
+.divider {
+  width: 100%;
+  /* 横线宽度与容器同宽 */
+  height: 2px;
+  /* 横线高度 */
+  background-color: #E5E5E5;
+  /* 横线颜色，可按需调整 */
+  margin-bottom: 12px;
+  /* 上下外边距，调整横线与div的间距 */
+  margin-top: 6px;
+}
+
 .huabu {
     display: flex;
     justify-content: space-between;
@@ -258,22 +278,30 @@ const getCurrentTableData = () => {
     transition: width 0.2s ease, height 0.2s ease;
 }
 
+.jiacu {
+  font-weight: bold;
+}
 
 .logo-and-name {
     display: flex;
     align-items:center;
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   .company-logo {
     width: 70px;
     height: 70px;
     margin-right: 20px;
+    margin-left: 40px;
   }
 
   .company-name {
     font-size: 16px;
     font-weight:400;
-    color: black;
+    color: #3761F5;
+    font-weight: bold;
     margin-bottom: 6px;
   }
   .proj-name {
@@ -291,15 +319,23 @@ const getCurrentTableData = () => {
 
   .text-box {
     margin-top: 10px;
+    background-color: white;
+  box-shadow: 5px 5px 3px 0 rgba(153, 153, 153, 0.3); 
+  padding: 20px;
+  border-radius: 10px;
   }
+
   .text-title {
     color: #3761F5;
     font-size:14px;
+    font-weight: bold;
   }
+
   .text-contain {
     color: black;
     font-size:14px;
     text-indent: 2em;
+    line-height: 2;
   }
 
   .new-title {
