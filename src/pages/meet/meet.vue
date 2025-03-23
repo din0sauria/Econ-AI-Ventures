@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="block-12">
-            <div class="meeting-header">
+            <div class="meeting-header" >
               <span>会议安排</span>
               <div class="divider"></div>
             </div>
@@ -27,6 +27,7 @@
               :data="meetingList"
               border
               class="datatable-12"
+              @click="$router.push('/zhihui')"
             >
               <el-table-column type="selection" width="50"></el-table-column>
               <el-table-column
@@ -186,26 +187,26 @@ const tableData_2 = ref([
 
 const recordingList = ref([
   {
-    projectName: '老乡鸡项目私董智汇会议',
-    meetingTime: '03-02 15:30-16:40',
-    participantNumber: '6人',
+    projectName: '老乡鸡产品创新头脑风暴会',
+    meetingTime: '02-01 09:00-10:30',
+    participantNumber: '8人',
     pic: meet1
   },
   {
-    projectName: '老乡鸡供应链优化研讨会',
-    meetingTime: '03-05 14:00-15:30',
+    projectName: '老乡鸡数字化转型研讨会',
+    meetingTime: '02-05 14:00-15:30',
     participantNumber: '8人',
     pic: meet2
   },
   {
-    projectName: '老乡鸡市场拓展策略会议',
-    meetingTime: '03-10 10:00-11:30',
-    participantNumber: '7人',
+    projectName: '老乡鸡客户体验优化会议',
+    meetingTime: '02-10 10:00-11:30',
+    participantNumber: '9人',
     pic: meet3
   },
   {
-    projectName: '老乡鸡品牌建设专题会议',
-    meetingTime: '03-15 13:30-15:00',
+    projectName: '老乡鸡食品安全与质量管理会议',
+    meetingTime: '03-01 13:30-15:00',
     participantNumber: '5人',
     pic: meet4
   }
@@ -361,6 +362,12 @@ const getContentColor = (content) => {
   background-color: #ccc; /* 灰色背景模拟缩略图 */
   border-radius: 5px;
   margin-bottom: 10px;
+  transition: filter 0.2s ease;
+}
+
+.thumbnail:hover {
+  filter: brightness(1.2); /* 增加亮度，实现泛白效果 */
+  transition: filter 0.2s ease;
 }
 
 .info {
