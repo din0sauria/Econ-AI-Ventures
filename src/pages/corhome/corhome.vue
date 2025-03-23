@@ -443,7 +443,7 @@ const activeTab = ref('business');
   background-color: #e0e0e0;
 }
 .right-content {
-  flex: 2;
+  flex: 3;
   display: flex;
   flex-direction: row;
   gap: 30px;

@@ -58,7 +58,7 @@
             </div>
 
             <div class="huabu">
-            <div class="new-title">五步法画布（定量版）
+            <div class="new-title">五步法画布
                 <img :src="refreshSrc" alt="公司logo" class="icon-logo" />
                 <img :src="updownSrc" alt="公司logo" class="icon-logo" />
             </div>
@@ -78,7 +78,7 @@
                 :class="{ active: currentVersion === 'qualitative' }"
                 @click="currentVersion = 'qualitative'"
                 >
-                定性版
+                取舍版
                 </el-button>
                 <el-button
                 type="text"
@@ -90,43 +90,55 @@
             </div>
             </div>
 
-
-            <el-table
+            <img :src="getCurrentTableData()" alt="公司logo" class="huabu" />
+            <!-- <el-table
                 :data="getCurrentTableData()"
                 border
                 style="width: 100%; margin-top: 20px;"
                 >
                 <el-table-column
-                    prop="dimension"
-                    label="维度"
-                    width="120"
-                />
+                prop="dimension"
+                label="维度"
+                width="120">
+                <template v-slot="{ row }">
+                    <div style="white-space: normal;">{{ row.dimension }}</div>
+                </template>
+                </el-table-column>
                 <el-table-column
-                    prop="demand"
-                    label="需求"
-                    width="280"
-                />
+                prop="demand"
+                label="需求"
+                width="280">
+                <template v-slot="{ row }">
+                    <div style="white-space: normal;">{{ row.demand }}</div>
+                </template>
+                </el-table-column>
                 <el-table-column
                     prop="solution"
                     label="解决方案"
                     width="280"
-                />
-                <el-table-column
-                    prop="businessModel"
-                    label="商业模式"
-                    width="280"
-                />
-                <el-table-column
-                    prop="growth"
-                    label="增长"
-                    width="280"
-                />
-                <el-table-column
-                    prop="moat"
-                    label="壁垒"
-                    width="280"
-                />
-                </el-table>
+                >
+                </el-table-column>
+                    <el-table-column
+                        prop="businessModel"
+                        label="商业模式"
+                        width="280"
+                    >
+                </el-table-column>
+                    <el-table-column
+                        prop="growth"
+                        label="增长"
+                        width="280"
+                    >
+                </el-table-column>
+                    <el-table-column
+                        prop="moat"
+                        label="壁垒"
+                        width="280"
+                    >
+                </el-table-column>
+            </el-table> -->
+
+            <div ></div>
 
 
         </div>
@@ -136,7 +148,6 @@
 <script setup>
 import { ref } from 'vue';
 import { ElTable, ElTableColumn } from 'element-plus';
-
 import logo1 from '@/assets/cortab/cor1.png'; 
 const imageSrc1 = ref(logo1);
 import navbar from '@/components/navbar.vue';
@@ -172,7 +183,20 @@ const qualitativeData = [
 const quantitativeData = [
   {
     dimension: '定性取舍',
-    demand: '健康需求：健康意识的提升使得消费者注重餐饮的健康性。',
+    demand: "画像：", 
+// 目标用户：主要面向的是25-45岁的上班族及家庭消费群体。
+// 消费习惯：追求性价比高、方便快捷的餐饮体验，同时注重食物的品质和口味。
+
+// 问题：
+// 就餐需求：消费者需要既能满足饱腹又能节省时间的餐饮选择。
+// 健康需求：健康意识的提升使得消费者注重餐饮的健康性。
+// 多样化需求：不同消费者对于菜品的口味、种类有着不同的偏好。
+
+// 非用户：
+// 年轻学生群体：可能更倾向于价格更低廉、更符合学生消费水平的餐饮选择。
+// 高端消费群体：可能更倾向于选择高档餐厅或特色餐饮店。
+// 特殊饮食需求群体：如素食主义者、过敏源人群等，可能无法满足他们的特殊需求。
+   
     solution: '服务体验：提供优质的服务体验。',
     businessModel: '复购：建立会员制度，通过积分、优惠券等方式鼓励消费者多次消费。',
     growth: '合作渠道：与企事业单位、学校、社区等合作，提供团体订餐、活动赞助等服务。',
@@ -190,15 +214,20 @@ const quantitativeData = [
 
 const currentVersion = ref('quantitative');
 
-const getCurrentTableData = () => {
-  if (currentVersion.value ==='story') {
-    return storyData;
-  } else if (currentVersion.value === 'qualitative') {
-    return qualitativeData;
-  }
-  return quantitativeData;
-};
 
+import huabu1 from '@/assets/projtab/huabu1.png';
+import huabu2 from '@/assets/projtab/huabu2.png';
+import huabu3 from '@/assets/projtab/huabu3.png';
+
+
+const getCurrentTableData = () => {
+  if (currentVersion.value === 'story') {
+    return huabu1;
+  } else if (currentVersion.value === 'qualitative') {
+    return huabu2;
+  }
+  return huabu3;
+};
 
 
 
@@ -321,5 +350,9 @@ const getCurrentTableData = () => {
 :deep(.active) {
   color: #409eff;
   border-bottom: 2px solid #409eff;
+}
+
+.huabu {
+  width: 100%;
 }
 </style>

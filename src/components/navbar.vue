@@ -18,9 +18,14 @@
       <el-menu-item index="project" class="nav-item" @click="$router.push('/cor')">企业项目</el-menu-item>
 
       <el-menu-item index="fund" class="nav-item"@click="$router.push('/meet')">私董智库</el-menu-item>
-      <el-menu-item index="chain" class="nav-item" @click="$router.push('/skv')"><el-dropdown>
-          <span class="el-dropdown-link nav-item" style="color: white;">
-            全链智溯
+      <el-menu-item index="chain" class="nav-item"@click="$router.push('/skv')">全链智溯</el-menu-item>
+      
+      <!-- 登录按钮 -->
+      <el-menu-item index="login" class="nav-item">
+        <el-avatar type="text" class="login-btn" @click="$router.push('/login')">
+          <el-dropdown>
+          <span class="el-dropdown-link nav-item" style="color: white; margin-left: 30px">
+            <img src="@/assets/login.svg" />
             <el-icon class="el-icon--right">
               <arrow-down />
             </el-icon>
@@ -40,17 +45,19 @@
               <el-dropdown-item @click="$router.push('/company')"><el-icon>
                   <OfficeBuilding />
                 </el-icon>企业入驻</el-dropdown-item>
+                <el-dropdown-item @click="$router.push('/newproj')"><el-icon>
+                  <CirclePlus />
+                </el-icon>项目创建</el-dropdown-item>
+            <el-dropdown-item ><el-icon>
+                  <Tools />
+                </el-icon>尽调管理</el-dropdown-item>
               <el-dropdown-item command="logout" divided><el-icon>
                   <Right />
                 </el-icon>退出登录</el-dropdown-item>
+            
             </el-dropdown-menu>
           </template>
-        </el-dropdown></el-menu-item>
-
-      <!-- 登录按钮 -->
-      <el-menu-item index="login" class="nav-item">
-        <el-avatar type="text" class="login-btn" @click="$router.push('/login')">
-          Login
+        </el-dropdown>
         </el-avatar>
       </el-menu-item>
     </el-menu>
@@ -59,7 +66,7 @@
 
 <script setup lang="ts">
 import { ElMenu, ElMenuItem, ElButton, ElAvatar } from 'element-plus'
-import { ChatDotRound, Setting, Star, OfficeBuilding, Right } from '@element-plus/icons-vue'
+import { ChatDotRound, Setting, Star, OfficeBuilding, Right, CirclePlus, Tools } from '@element-plus/icons-vue'
 </script>
 
 <style scoped>
@@ -115,6 +122,7 @@ import { ChatDotRound, Setting, Star, OfficeBuilding, Right } from '@element-plu
 .login-btn {
   color: white !important;
   font-weight: bold;
+  font-size: small!important;
   padding: 0 !important;
 }
 
@@ -125,4 +133,5 @@ import { ChatDotRound, Setting, Star, OfficeBuilding, Right } from '@element-plu
 .el-dropdown-link:focus {
   outline: none;
 }
+
 </style>

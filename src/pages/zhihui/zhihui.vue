@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+      <navbar style="background-color:black;"/>
       
       <div class="main-content">
 
@@ -31,8 +32,8 @@
         <div class="right-section">
         <!-- 右边上部分 -->
         <div class="right-top-section">
-            <div style="height: 30px; font-size: small; color: gray; padding: 5px 15px 5px 15px;">屏幕共享</div>
-            <img src="@/assets/zhihuitab/steam.svg" class="steam_pic"/>
+            <div style="height: 30px;  color: gray; padding: 5px 15px 5px 15px;">屏幕共享</div>
+            <img src='@/assets/meettab/1.png' class="steam_pic"/>
         </div>
         <!-- 右边下部分 -->
         <div class="right-bottom-section">
@@ -234,7 +235,7 @@ const sendMessage = () => {
 }
 
 .right-section {
-  flex: 4;
+  flex: 3;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -276,9 +277,13 @@ const sendMessage = () => {
 }
 
 .steam_pic {
-    width: 100%;
-    padding: 10px;
-    margin-top: -10px;
+    width: 95%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border: solid 2px gray;
+    border-radius: 10px;
 }
 
 .meeting-progress {

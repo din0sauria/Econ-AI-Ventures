@@ -251,7 +251,6 @@ const rules = reactive({
     ],
     phone: [
         { required: true, message: '请输入联系电话', trigger: 'blur' },
-        { pattern: /^1[3-9]\d{9}$/, message: '手机号格式不正确' }
     ],
     legalRepresentative: [
         { required: true, message: '请输入法定代表人', trigger: 'blur' }
@@ -381,6 +380,7 @@ const resetForm = () => {
     display: flex;
     align-items: center;
     margin-bottom: 12px;
+    color:black;
 }
 
 .upload-icon {
