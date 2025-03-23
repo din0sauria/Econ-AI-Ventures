@@ -35,7 +35,8 @@ const router = createRouter({
     {
       path: '/expertVideo',
       component: ExpertVideo,
-
+    },
+    {
       path: '/cor',
       component: Cor,
     },

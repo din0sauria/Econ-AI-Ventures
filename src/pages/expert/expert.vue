@@ -15,7 +15,7 @@
                 <div class="search-container">
                     <el-input v-model="searchText" placeholder="搜索..." clearable>
                         <template #append>
-                            <el-button @click="handleSearch"><el-icon>
+                            <el-button><el-icon>
                                     <Search />
                                 </el-icon></el-button>
                         </template>

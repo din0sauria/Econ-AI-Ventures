@@ -3,7 +3,7 @@
         <navbar style="background-color: black;" />
         <div class="container">
             <!-- 标题区域 -->
-            <div class="header">
+            <div class="head">
                 <h1 class="title">{{ videoTitle }}</h1>
                 <div class="subtitle">{{ videoSubtitle }}</div>
                 <div class="time">{{ videoTime }}</div>
@@ -274,7 +274,7 @@ const tabsData = [
     margin: 20px auto;
     width: 90%;
 
-    .header {
+    .head {
         margin-bottom: 20px;
     }
 
