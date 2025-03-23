@@ -8,31 +8,27 @@
 
             <!-- 文件上传卡片区域 -->
             <div class="upload-cards">
-                <el-row :gutter="20">
-                    <el-col v-for="(tab, index) in uploadTabs" :key="index" :xs="12" :sm="6" :md="4" :lg="3">
-                        <el-upload :action="uploadUrl" :limit="5" :file-list="form[index]"
-                            :on-change="(file, files) => handleUploadChange(files, index)"
-                            :on-remove="() => handleRemove(index)">
-                            <div class="upload-card" :class="{ 'active-tab': activeTab === tab.name }"
-                                @click="activeTab = tab.name">
+    <el-row :gutter="20">
+        <el-col v-for="(tab, index) in uploadTabs" :key="index" :xs="12" :sm="6" :md="4" :lg="3">
+            <el-upload :action="uploadUrl" :limit="5" :file-list="form[index]"
+                :on-change="(file, files) => handleUploadChange(files, index)"
+                :on-remove="() => handleRemove(index)">
+                <div class="upload-card" :class="{ 'active-tab': activeTab === tab.name }"
+                    @click="activeTab = tab.name">
 
-                                <div class="card-icon">{{ tab.icon }}</div>
-                                <h3>{{ tab.label }}</h3>
-                                <p class="tip-text">点击上传文件</p>
-                                <div class="hover-mask">
-                                    <el-icon :size="32"><upload-filled /></el-icon>
-                                </div>
+                    <div class="card-icon">{{ tab.icon }}</div>
+                    <h3>{{ tab.label }}</h3>
+                    <p class="tip-text">点击上传文件</p>
+                    <div class="hover-mask">
+                        <el-icon :size="32"><upload-filled /></el-icon>
+                    </div>
 
-                            </div>
-
-                        </el-upload>
-                        <div v-if="form[index].length > 0" v-for="i of form[index]"
-                            style="font-size: small;color: green;">{{ i }}</div>
-                    </el-col>
-
-                </el-row>
-            </div>
-
+                </div>
+            </el-upload>
+            <!-- 移除手动渲染的文件名列表 -->
+        </el-col>
+    </el-row>
+</div>
 
             <div class="canvaslist">
                 <!-- 操作按钮 -->
@@ -406,6 +402,7 @@ h1 {
     display: flex;
     gap: 20px;
     align-items: center;
+    color: black;
 }
 
 /* 优化段落样式 */
