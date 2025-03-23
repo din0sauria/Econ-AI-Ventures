@@ -12,6 +12,7 @@ import Meet from '@/pages/meet/meet.vue'
 import Proj from '@/pages/proj/proj.vue'
 import Zhihui from '@/pages/zhihui/zhihui.vue'
 import Company from '@/pages/company/company.vue'
+import Canvas from '@/pages/cor/canvas.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -71,6 +72,10 @@ const router = createRouter({
     {
       path: '/zhihui',
       component: Zhihui,
+    },
+    {
+      path: '/canvas',
+      component: Canvas,
     },
   ],
 })

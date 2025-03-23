@@ -80,10 +80,8 @@
 
 <script setup>
 import navbar from '@/components/navbar.vue';
-import { ElDivider, ElSpace, ElCarousel } from 'element-plus';
 
-import { Search } from '@element-plus/icons-vue';
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 const searchText = ref('');
 const activeName = ref('first');
 
@@ -93,8 +91,21 @@ const videoTime = '发布时间：2020-08-30 12:57:21'
 const activeTab = ref('fulltext')
 const inputValue = ref('');
 
-// 模拟长文本内容
-const fullTextContent = `零售行业的发展与变迁
+onMounted(() => {
+    let index = 0
+    const timer = setInterval(() => {
+        if (index < rawFullText.length) {
+            fullTextContent.value += rawFullText[index]
+            index++
+        } else {
+            clearInterval(timer)
+        }
+    }, 20)
+})
+
+// 长文本内容
+const fullTextContent = ref('') // 改为响应式引用
+const rawFullText = `零售行业的发展与变迁
 本期内容主要讲述了零售行业的发展史，从古代的小作坊式零售到现代的百货商店和邮购，再到直播带货等新商业模式。讲者认为，每个时代的人基本需求都是一样的，希望产品质量更好、价格更便宜、购买更便捷。随着蒸汽机的出现，交通网络的发展，零售行业出现了新的业态，如百货商店、零售店和邮购等。花木兰生活在这个时代，不用东市西市的到处跑，可以去百货公司的军用装备专区，或者去军用装备连锁店，也可以体验最早的网购。
 
 零售业的进化与变革

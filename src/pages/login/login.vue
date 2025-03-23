@@ -20,11 +20,11 @@
       <main class="right">
         <el-form label-position="top" class="login-form">
           <el-form-item label="Your Email">
-            <el-input type="email" placeholder="123456789@163.com" size="large" disabled />
+            <el-input type="email" placeholder="123456789@163.com" size="large" v-model="email" />
           </el-form-item>
 
           <el-form-item label="Password">
-            <el-input type="logo-item" placeholder="**********" show-password size="large" disabled />
+            <el-input type="logo-item" placeholder="**********" show-password size="large" v-model="pwd" />
           </el-form-item>
 
           <div class="remember-forgot">
@@ -39,12 +39,20 @@
           <el-divider class="separator">OR USE</el-divider>
 
         </el-form>
+        <div class="social-media">
+          <div class="social-icon" style="display: flex;justify-content: space-around;">
+            <img src="../../assets/支付宝_logo.png" width="32px" height="32px" />
+            <img src="../../assets/qq_symbol.png" width="32px" height="32px" />
+            <img src="../../assets/wx_logo.png" width="32px" height="32px" />
+            <el-icon size="32px">
+              <MoreFilled />
+            </el-icon>
+          </div>
+
+        </div>
       </main>
     </div>
-    <footer class="footer">
-      <p>ASDT GHJ KLZKCR PARKERANK ASDT GHJ KLZ</p>
-      <p>XCXR G SGQHALNKK.</p>
-    </footer>
+
   </div>
 </template>
 
@@ -52,7 +60,10 @@
 import Navbar from '@/components/navbar.vue'
 import router from '@/router'
 import { ElDivider, ElSpace, ElForm, ElFormItem, ElInput, ElCheckbox, ElLink, ElButton } from 'element-plus'
-
+import { MoreFilled } from '@element-plus/icons-vue';
+import { ref } from 'vue'
+const email = ref('')
+const pwd = ref('')
 const toHome = () => {
   router.push({
     path: '/home'
@@ -91,7 +102,7 @@ const toHome = () => {
 .right {
   background-color: white;
   width: 400px;
-  height: 450px;
+  min-height: 500px;
   padding: 50px;
   border-radius: 10px;
 }
