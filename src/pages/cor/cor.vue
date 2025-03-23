@@ -171,7 +171,7 @@ const allBoxes = [
     industry: '餐饮',
     introduction: '海底捞1994 年在四川简阳创立，以优质服务闻名于世 。海底捞提供丰富多样的火锅菜品，锅底口味众多，能满足不同消费者需求。',
     operationScene: '在中国各大城市核心商圈、商业综合体等地开设大量门店，形成广泛覆盖 。在国际上，已在新加坡、美国、英国、韩国等多个国家和地区开设分店，将中国火锅推向世界 。',
-    labelNumber: '2',
+    labelNumber: '5',
     investmentProjects: '有'
   },
   {
@@ -181,7 +181,7 @@ const allBoxes = [
     industry: '餐饮',
     introduction: '蜜雪冰城1997年创立于河南郑州，定位“极致性价比”的国民茶饮品牌，以均价6-10元的冰淇淋、果茶及奶茶为核心产品。',
     operationScene: '国内下沉市场渗透率第一，海外重点布局东南亚（越南、印尼、菲律宾等），同步拓展欧美华人社区。',
-    labelNumber: '3',
+    labelNumber: '4',
     investmentProjects: '有'
   },
   {
@@ -191,8 +191,8 @@ const allBoxes = [
     industry: '餐饮',
     introduction: '喜厨成立于2023年11月，总部位于广东惠州，是以"现包水饺+砂锅菜"为核心品类的品质餐饮品牌。通过精选食材与标准化工艺，打造手工水饺、特色砂锅等家庭化场景餐饮服务。',
     operationScene: '以惠州为起点，辐射珠三角地区。',
-    labelNumber: '6',
-    investmentProjects: '有'
+    labelNumber: '0',
+    investmentProjects: '无'
   },
   {
     imageSrc: imageSrc5,
@@ -201,7 +201,7 @@ const allBoxes = [
     industry: '服务',
     introduction: '中国邮政集团有限公司是依照《中华人民共和国公司法》组建的国有独资公司，由中央管理，是国有重要骨干企业。主要从事邮件寄递、邮政汇兑和邮政储蓄等业务，同时经营邮票发行业务等。',
     operationScene: '立足国内，覆盖全国城乡。',
-    labelNumber: '6',
+    labelNumber: '7',
     investmentProjects: '有'
   },
   {
@@ -434,12 +434,19 @@ input {
   display: flex;
   align-items: center;
   margin-bottom: 8px;
+  color:black;
+  transition: color 0.2s ease;
+}
+.company-name:hover {
+  color: #3761F5;
   transition: color 0.2s ease;
 }
 .company-name {
   font-size: 16px;
   font-weight: bold;
   margin-right: 10px;
+  color: black;
+  transition: color 0.2s ease;
 }
 .tag-button2 {
   background-color: rgba(55, 97, 245, 0.12); 

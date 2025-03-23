@@ -7,6 +7,8 @@
               <img :src="par1Src" alt="Logo" class="par-class" />
               加入会议
             </div>
+
+
             <div class="par-box">
               <img :src="par2Src" alt="Logo" class="par-class" />
               预约会议
@@ -96,7 +98,8 @@
                 :key="index" 
                 class="recording-item"
               >
-                <div class="thumbnail"></div>
+                  <img :src="item.pic"  alt="Logo" class="thumbnail" />
+                
                 <div class="info">
                   <div class="project-name">项目名称 {{ item.projectName }}</div>
                   <div class="meeting-info">
@@ -126,26 +129,43 @@ const par2Src = ref(par2);
 import par3 from '@/assets/meettab/par3.svg'
 const par3Src = ref(par3);
 
+
+import meet2 from '@/assets/meettab/会议2.png'; 
+import meet3 from '@/assets/meettab/会议3.png'; 
+import meet4 from '@/assets/meettab/会议4.png'; 
+
+
+
+import logo1 from '@/assets/cortab/cor1.png'; 
+const imageSrc1 = ref(logo1);
+
+
+
+
 const meetingList = ref([
   {
     meetingTime: '2025-03-02 15:30-16:40',
     projectName: '老乡鸡项目私董智汇会议',
-    participantNumber: '6人'
+    participantNumber: '6人',
+    pic: '@/assets/meettab/meet1.jpg'
   },
   {
     meetingTime: '2025-03-05 14:00-15:30',
     projectName: '老乡鸡供应链优化研讨会',
-    participantNumber: '8人'
+    participantNumber: '8人',
+    pic: meet2
   },
   {
     meetingTime: '2025-03-10 10:00-11:30',
     projectName: '老乡鸡市场拓展策略会议',
-    participantNumber: '7人'
+    participantNumber: '7人',
+    pic: meet3
   },
   {
     meetingTime: '2025-03-15 13:30-15:00',
     projectName: '老乡鸡品牌建设专题会议',
-    participantNumber: '5人'
+    participantNumber: '5人',
+    pic: meet4
   }
 ]);
 

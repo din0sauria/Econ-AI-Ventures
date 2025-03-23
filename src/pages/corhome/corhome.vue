@@ -106,7 +106,7 @@
    </el-card>
 
 
-<el-card class="bottom-detail-info-4">
+<div class="bottom-detail-info-4">
 
 
     <div class="left-nav">
@@ -116,6 +116,7 @@
         <el-button  class="button-chuangtou">待开始 0</el-button>
         <el-button  class="button-chuangtou">已结束 3</el-button>
         <el-button  class="button-chuangtou">已参与 0</el-button>
+        <el-button  class="button-chuangtou-new" @click="$router.push('/newproj')">为企业创建新项目</el-button>
     </div>
 
     
@@ -123,7 +124,7 @@
     <div class="right-content">
       <div v-for="(block, index) in 1" :key="index" class="block">
         <el-card>
-          <div class="block-header">
+          <div class="block-header" @click="$router.push('/proj')">
             <img :src=fireSrc  class="firepic" />
             <span>老乡鸡餐饮</span>
           </div>
@@ -167,7 +168,7 @@
     </div>
 
 
-</el-card>
+</div>
 
 
     </div>
@@ -192,39 +193,45 @@ const fireSrc = ref(fire);
 
   
   // 公司信息数据
-  const companyName = '沃尔玛（中国）投资有限公司';
+  const companyName = '安徽老乡鸡餐饮有限公司';
   const companyTags = ['连锁零售巨头', '全渠道零售'];
-  const industry = '零售行业';
-  const intro = '1962年由山姆·沃尔顿先生在美国阿肯色州成立，是世界大型连锁零售企业。旗下拥有沃尔玛大卖场和山姆会员店等营业方式，为顾客提供无缝连接的零售服务，通过实体零售店、在线电子商店、以及移动设备移动端等不同平台不同方式来帮助世界各地的人们随时随地节省开支，并生活得更好。';
-  const businessArea = '在19个国家经营超过10,500家门店和多个电子商务网站，业务遍布全球，在中国也有众多门店。';
-  const creditCode = 'XXXXXXXXXXXXXXXXXXXXXX';
-  const legalRepresentative = 'XXX';
-  const registerCapital = 'XXXXXXXXXXX万元人民币';
-  const establishDate = 'XXXX年XX月XX日';
-  const phone = 'XXXXXXXXXXX';
-  const email = 'XXXXXXXXXXX';
-  const website = 'XXXXXXXXXXX';
-  const address = 'XXXXXXXXXXXXXXXXXXX';
+  const industry = '餐饮';
+  const intro = '安徽老乡鸡餐饮有限公司是一家从事餐饮服务,食品销售,食品生产等业务的公司，成立于2003年10月22日，公司坐落在安徽省，详细地址为：安徽省合肥市蜀山区经济开发区湖光路自主创新产业基地三期（南区）B座12层1288室。';
+  const businessArea = '安徽省合肥市蜀山区';
+  const creditCode = '913401007548775701';
+  const legalRepresentative = '王琴琴';
+  const registerCapital = '69616.359100万元人民币';
+  const establishDate = '2003年10月22日';
+  const phone = '400-766-1777';
+  const email = 'lxj@lxjchina.com.cn';
+  const website = 'https://lxjchina.com.cn/';
+  const address = '安徽省合肥市蜀山区经济开发区湖光路自主创新产业基地三期（南区）B座12层1288室;';
   const companyScale = '大型';
-  const employeeNumber = 'XXXX';
-  const revenue = 'XXX.XXX';
-  const labelNumber = 1;
-  const investmentProjects = '有众多投资项目，如对电商等领域的投资以拓展业务渠道，还曾投资印度电商Flipkart等。';
-  
+  const employeeNumber = '10926人';
+  const revenue = '56.51';
+  const labelNumber = 2;
+  const investmentProjects = '2个';  
 
   const tableData_business = [{
   统一社会信用代码: '法定代表人',
+  '913401007548775701': '王琴琴',
   企业名称: '登记状态',
+  '安徽老乡鸡餐饮有限公司': '开业',
   曾用名: '成立日期',
-  关联企业: 6,
-  实缴资本: '纳税人识别号',
+  '安徽老乡鸡餐饮股份有限公司': '2003年10月22日',
+  所属行业: '纳税人识别号',
+  '75487757-0': '其他有限责任公司',
   组织机构代码: '企业类型',
   注册资本: '工商注册号',
-  分支机构参保人数: '纳税人资质',
-  人员规模: '所属地区',
-  参保人数: '营业期限',
-  国标行业: '注册地址',
+  '69,626.3591万元': '340100000004576',
+  参保人数: '所属地区',
+  餐饮业: '913401007548775701',
+  '10926人': '安徽省',
+  纳税人资质: '登记机关',
+  '增值税一般纳税人': '合肥市市场监督管理局',
   登记机关: '英文名',
+  营业期限: '核准日期',
+  '2003-10-22 至 无固定期限': '2024-07-31',
   核准日期: '进出口企业代码',
   经营范围: '一般经营项目: 程控交换机、传输设备……'
 }];
@@ -233,28 +240,31 @@ const fireSrc = ref(fire);
 
 const tableColumns_1 = [
   { label: '统一社会信用代码', prop: '统一社会信用代码' },
-  { label: '统一社会信用代码', prop: '统一社会信用代码' },
+  { label: '913401007548775701', prop: '913401007548775701' },
   { label: '企业名称', prop: '企业名称' },
-  { label: '企业名称', prop: '企业名称' },
+  { label: '安徽老乡鸡餐饮有限公司', prop: '安徽老乡鸡餐饮有限公司' },
   { label: '曾用名', prop: '曾用名' },
-  { label: '曾用名', prop: '曾用名' },
+  { label: '安徽老乡鸡餐饮股份有限公司', prop: '安徽老乡鸡餐饮股份有限公司' },
 ];
+
 const tableColumns_2 = [
   { label: '组织机构代码', prop: '组织机构代码' },
-  { label: '组织机构代码', prop: '组织机构代码' },
+  { label: '75487757-0', prop: '75487757-0' },
   { label: '注册资本', prop: '注册资本' },
-  { label: '注册资本', prop: '注册资本' },
-  { label: '实缴资本', prop: '实缴资本' },
-  { label: '实缴资本', prop: '实缴资本' },
+  { label: '69,626.3591万元', prop: '69,626.3591万元' },
+  { label: '所属行业', prop: '所属行业' },
+  { label: '餐饮业', prop: '餐饮业' },
 ];
+
 const tableColumns_3 = [
-  { label: '人员规模', prop: '人员规模' },
-  { label: '人员规模', prop: '人员规模' },
   { label: '参保人数', prop: '参保人数' },
-  { label: '参保人数', prop: '参保人数' },
-  { label: '分支机构参保人数', prop: '分支机构参保人数' },
-  { label: '分支机构参保人数', prop: '分支机构参保人数' },
+  { label: '10926人', prop: '10926人' },
+  { label: '营业期限', prop: '营业期限' },
+  { label: '2003-10-22 至 无固定期限', prop: '2003-10-22 至 无固定期限' },
+  { label: '纳税人资质', prop: '纳税人资质' },
+  { label: '增值税一般纳税人', prop: '增值税一般纳税人' },
 ];
+
 const tableColumns_4 = [
   { label: '国标行业', prop: '国标行业' },
   { label: '国标行业', prop: '国标行业' },
@@ -405,9 +415,8 @@ const activeTab = ref('business');
 .bottom-detail-info-4 {
     display: flex;
     flex-direction: row;
-    margin-top: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
+    padding: 25px;
+    gap: 25px;
 }
 
 .bussiness-pic {
@@ -421,6 +430,9 @@ const activeTab = ref('business');
 
 .left-nav {
   flex:1;
+  height: 310px;
+  background-color: white;
+  box-shadow: 5px 5px 10px 0 rgba(153, 153, 153, 0.3); 
   align-items: center;
 }
 .nav-item {
@@ -431,27 +443,32 @@ const activeTab = ref('business');
   background-color: #e0e0e0;
 }
 .right-content {
-  flex: 1;
+  flex: 2;
   display: flex;
   flex-direction: row;
-  padding: 20px;
-  margin-left: 200px;
+  gap: 30px;
+
 }
 .block {
   width: 50%;
-  padding: 10px;
+  height: 300px;
 }
 .block-header {
     display: flex;
     align-items: center;
   margin-bottom: 10px;
   margin-left: 0px;
+  transition: color 0.2s ease;
 }
 
 .block-header > * {
   margin-right: 5px; /* 元素右侧添加10px的外边距，可根据需求调整 */
 }
 
+.block-header:hover{
+  color: #3761F5;
+  transition: color 0.2s ease;
+}
 
 .block-info {
     display: flex;
@@ -484,6 +501,16 @@ const activeTab = ref('business');
     width: 60%;
     color: white;
     background-color: #3761F5;
+}
+
+.button-chuangtou-new {
+  margin-top: 10px;
+    margin-bottom: 5px;
+    width: 60%;
+    color: #3761F5;
+    background-color: white;
+    border: 1px solid #3761F5;
+
 }
 
 .button-chuangtou-shade{

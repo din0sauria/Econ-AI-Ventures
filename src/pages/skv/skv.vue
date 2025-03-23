@@ -53,11 +53,12 @@
       </div>
 
       <div class="business-table">
-        <el-table :data="tableData" border style="width: 100%">
+        <el-table :data="tableData" border style="width: 100%" @row-click="$router.push('/skvhome')"           >
           <el-table-column v-for="column in columns" :key="column.prop" :prop="column.prop" :label="column.label"
-            :sortable="true" :align="column.align || 'center'" />
+            :sortable="true" :align="column.align  || 'center'" />
         </el-table>
       </div>
+      
     </div>
   </div>
 </template>
@@ -89,6 +90,10 @@ const columns = ref([
   { prop: 'ddl', label: '数据截至', align: 'right' },
 
 ]);
+
+
+
+
 </script>
 
 <style scoped>
