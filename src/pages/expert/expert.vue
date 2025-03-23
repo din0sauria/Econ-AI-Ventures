@@ -179,7 +179,7 @@ const tabsData = [
 
 .title {
     width: 80%;
-    margin-top: 20px;
+    margin-top:10px;
     margin-left: 10%;
     display: flex;
     justify-content: space-between;

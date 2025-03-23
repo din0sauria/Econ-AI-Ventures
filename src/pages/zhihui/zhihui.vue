@@ -68,38 +68,55 @@
                     />
                 </div>
             </div>
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <!-- 右边下部分右边 -->
             <div class="right-bottom-right-section">
                 <h2 class="title">参会人员</h2>
                 <div style="height: 10px;"></div>
                 <div class="attendee-info">
                     <img src="@/assets/zhihuitab/peo.svg" alt="头像" class="avatar2" />
-                    <div class="name">张小五</div>
-                    <div class="company">超级无敌厉害有限公司</div>
-                    <div class="role">投资人</div>
+                    <div class="name">王芳</div>
+                    <div class="company">老乡鸡市场总监</div>
+                    <div class="role">融资主体</div>
                     <img src="@/assets/zhihuitab/record.svg" alt="头像" class="recode" />
                 </div>
 
                 <div class="attendee-info">
-                    <img src="@/assets/zhihuitab/peo.svg" alt="头像" class="avatar2" />
-                    <div class="name">张小五</div>
-                    <div class="company">超级无敌厉害有限公司</div>
-                    <div class="role">投资人</div>
+                    <img src="@/assets/meettab/logo2.svg" alt="头像" class="avatar2" />
+                    <div class="name">陈伟</div>
+                    <div class="company">老乡鸡财务总监</div>
+                    <div class="role">融资主体</div>
                     <img src="@/assets/zhihuitab/record2.svg" alt="头像" class="recode" />
                 </div>
 
                 <div class="attendee-info">
-                    <img src="@/assets/zhihuitab/peo.svg" alt="头像" class="avatar2" />
-                    <div class="name">张小五</div>
-                    <div class="company">超级无敌厉害有限公司</div>
-                    <div class="role">投资人</div>
+                    <img src="@/assets/meettab/logo3.svg" alt="头像" class="avatar2" />
+                    <div class="name">刘洋</div>
+                    <div class="company">老乡鸡运营总监</div>
+                    <div class="role">融资主体</div>
                     <img src="@/assets/zhihuitab/record2.svg" alt="头像" class="recode" />
                 </div>
 
                 <div class="attendee-info">
-                    <img src="@/assets/zhihuitab/peo.svg" alt="头像" class="avatar2" />
-                    <div class="name">张小五</div>
-                    <div class="company">超级无敌厉害有限公司</div>
+                    <img src="@/assets/meettab/logo4.svg" alt="头像" class="avatar2" />
+                    <div class="name">刘静</div>
+                    <div class="company">高瓴资本合伙人</div>
                     <div class="role">投资人</div>
                     <img src="@/assets/zhihuitab/record2.svg" alt="头像" class="recode" />
                 </div>
@@ -107,6 +124,7 @@
             </div>
         </div>
         </div>
+        
 
       </div>
     </div>
@@ -235,7 +253,7 @@ const sendMessage = () => {
 }
 
 .right-section {
-  flex: 3;
+  flex: 2;
   display: flex;
   flex-direction: column;
   gap: 20px;

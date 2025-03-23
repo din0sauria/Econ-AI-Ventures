@@ -282,6 +282,7 @@ const tabsData = [
         font-size: 24px;
         margin: 0 0 8px 0;
         max-width: 70%;
+        color: black;
     }
 
     .subtitle {
