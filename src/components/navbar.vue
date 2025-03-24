@@ -21,44 +21,38 @@
       <el-menu-item index="chain" class="nav-item" @click="$router.push('/skv')">全链智溯</el-menu-item>
 
       <!-- 登录按钮 -->
-      <el-menu-item index="login" class="nav-item">
-        <el-avatar type="text" class="login-btn" @click="$router.push('/login')">
-          <el-dropdown>
-            <span class="el-dropdown-link nav-item" style="color: white; margin-left: 30px">
-              <img src="@/assets/login.svg" />
-              <el-icon class="el-icon--right">
-                <arrow-down />
-              </el-icon>
-            </span>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item command="settings">
-                  <el-icon>
-                    <Setting />
-                  </el-icon>设置</el-dropdown-item>
-                <el-dropdown-item command="notifications"><el-icon>
-                    <ChatDotRound />
-                  </el-icon>消息通知</el-dropdown-item>
-                <el-dropdown-item command="favorites"><el-icon>
-                    <Star />
-                  </el-icon>我的关注</el-dropdown-item>
-                <el-dropdown-item @click="$router.push('/company')"><el-icon>
-                    <OfficeBuilding />
-                  </el-icon>企业入驻</el-dropdown-item>
-                <el-dropdown-item @click="$router.push('/newproj')"><el-icon>
-                    <CirclePlus />
-                  </el-icon>项目创建</el-dropdown-item>
-                <el-dropdown-item @click="$router.push('/canvas')"><el-icon>
-                    <Tools />
-                  </el-icon>尽调管理</el-dropdown-item>
-                <el-dropdown-item command="logout" divided><el-icon>
-                    <Right />
-                  </el-icon>退出登录</el-dropdown-item>
+      <el-menu-item index="login" class="nav-item" @click="$router.push('/login')">
 
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-        </el-avatar>
+        <el-dropdown>
+          <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" class="login-btn" />
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item command="settings">
+                <el-icon>
+                  <Setting />
+                </el-icon>设置</el-dropdown-item>
+              <el-dropdown-item command="notifications"><el-icon>
+                  <ChatDotRound />
+                </el-icon>消息通知</el-dropdown-item>
+              <el-dropdown-item command="favorites"><el-icon>
+                  <Star />
+                </el-icon>我的关注</el-dropdown-item>
+              <el-dropdown-item @click="$router.push('/company')"><el-icon>
+                  <OfficeBuilding />
+                </el-icon>企业入驻</el-dropdown-item>
+              <el-dropdown-item @click="$router.push('/newproj')"><el-icon>
+                  <CirclePlus />
+                </el-icon>项目创建</el-dropdown-item>
+              <el-dropdown-item @click="$router.push('/canvas')"><el-icon>
+                  <Tools />
+                </el-icon>尽调管理</el-dropdown-item>
+              <el-dropdown-item command="logout" divided><el-icon>
+                  <Right />
+                </el-icon>退出登录</el-dropdown-item>
+
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </el-menu-item>
     </el-menu>
   </nav>
