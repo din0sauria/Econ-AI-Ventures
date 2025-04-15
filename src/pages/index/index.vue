@@ -2,7 +2,9 @@
   <div class="bgm">
     <el-carousel height="80vh" motion-blur interval="5000" arrow="always">
       <el-carousel-item v-for="item in 4" :key="item">
-        <img v-if="item === 1" class="bgmimg" src="../../assets/home-bgm.png" />
+        <img v-if="item === 1" class="bgmimg" src="../../assets/swiper1.png" />
+        <img v-else-if="item === 2" class="bgmimg" src="../../assets/swiper2.png" />
+        <img v-else-if="item === 3" class="bgmimg" src="../../assets/swiper3.png" />
         <img v-else class="bgmimg" src="../../assets/exp-bgm.png" />
       </el-carousel-item>
     </el-carousel>
@@ -28,11 +30,47 @@
     <div class="fun" style="display: flex;">
       <div class="left-content">
         <el-tabs v-model="activeTab" tab-position="right" class="left-tabs" stretch>
-          <el-tab-pane v-for="tab in tabList" :key="tab.name" :label="tab.label" :name="tab.name" class="left-tab">
+          <el-tab-pane name="diligence" class="left-tab">
             <template #label>
               <div style="display: block;">
-                <div class="tab-label">{{ tab.label }}</div>
-                <div class="tab-into">{{ tab.description }}</div>
+                <div class="tab-label">尽调智理功能</div>
+                <div class="tab-into">创新多模态数据结构化处理赋能画布</div>
+              </div>
+            </template>
+          </el-tab-pane>
+
+          <el-tab-pane name="canvas" class="left-tab">
+            <template #label>
+              <div style="display: block;">
+                <div class="tab-label">多阶智导画布</div>
+                <div class="tab-into">多模块画布智能迭代覆盖全场景运用</div>
+              </div>
+            </template>
+          </el-tab-pane>
+
+          <el-tab-pane name="private" class="left-tab">
+            <template #label>
+              <div style="display: block;">
+                <div class="tab-label">私董智汇空间</div>
+                <div class="tab-into">智能投融协作视频会议AI辅助三阶推进</div>
+              </div>
+            </template>
+          </el-tab-pane>
+
+          <el-tab-pane name="expert" class="left-tab">
+            <template #label>
+              <div style="display: block;">
+                <div class="tab-label">专家智萃中心</div>
+                <div class="tab-into">专家访谈智能整合知识服务支持决策</div>
+              </div>
+            </template>
+          </el-tab-pane>
+
+          <el-tab-pane name="chain" class="left-tab">
+            <template #label>
+              <div style="display: block;">
+                <div class="tab-label">全链智溯系统</div>
+                <div class="tab-into">区块链全链条追溯智能合约透明投研</div>
               </div>
             </template>
           </el-tab-pane>
@@ -41,10 +79,105 @@
 
       <div class="right-content">
         <div class="grid-container">
-          <div v-for="(image, index) in currentTabImages" :key="index" class="grid-item">
-            <img :src="getImage(image.imgurl)" class="grid-image" :alt="image.caption" loading="lazy" />
-            <div class="image-caption">{{ image.caption }}</div>
-          </div>
+          <!-- 尽调智理功能 -->
+          <template v-if="activeTab === 'diligence'">
+            <div class="grid-item">
+              <img src="../../assets/hometab/尽调-上传.png" class="grid-image" alt="上传" loading="lazy" />
+              <div class="image-caption">上传</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/尽调-提取.png" class="grid-image" alt="提取" loading="lazy" />
+              <div class="image-caption">提取</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/尽调-编辑.jpg" class="grid-image" alt="编辑" loading="lazy" />
+              <div class="image-caption">编辑</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/尽调-同步.jpg" class="grid-image" alt="同步" loading="lazy" />
+              <div class="image-caption">同步</div>
+            </div>
+          </template>
+
+          <!-- 多阶智导画布 -->
+          <template v-if="activeTab === 'canvas'">
+            <div class="grid-item">
+              <img src="../../assets/hometab/多阶-智能生成.webp" class="grid-image" alt="智能生成" loading="lazy" />
+              <div class="image-caption">智能生成</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/多阶-材料上传.jpg" class="grid-image" alt="材料上传" loading="lazy" />
+              <div class="image-caption">材料上传</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/多阶-AI建议.webp" class="grid-image" alt="AI建议" loading="lazy" />
+              <div class="image-caption">AI建议</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/多阶-历史迭代.jpg" class="grid-image" alt="历史迭代" loading="lazy" />
+              <div class="image-caption">历史迭代</div>
+            </div>
+          </template>
+
+          <!-- 私董智汇空间 -->
+          <template v-if="activeTab === 'private'">
+            <div class="grid-item">
+              <img src="../../assets/hometab/私董-预约.jpg" class="grid-image" alt="预约" loading="lazy" />
+              <div class="image-caption">预约</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/私董-交互.jpg" class="grid-image" alt="交互" loading="lazy" />
+              <div class="image-caption">交互</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/私董-纪要.png" class="grid-image" alt="纪要" loading="lazy" />
+              <div class="image-caption">纪要</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/私董-优化.jpeg" class="grid-image" alt="优化" loading="lazy" />
+              <div class="image-caption">优化</div>
+            </div>
+          </template>
+
+          <!-- 专家智萃中心 -->
+          <template v-if="activeTab === 'expert'">
+            <div class="grid-item">
+              <img src="../../assets/hometab/专家-智能推荐.png" class="grid-image" alt="智能推荐" loading="lazy" />
+              <div class="image-caption">智能推荐</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/专家-深度挖掘.jpg" class="grid-image" alt="深度挖掘" loading="lazy" />
+              <div class="image-caption">深度挖掘</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/专家-交互问答.jpg" class="grid-image" alt="交互问答" loading="lazy" />
+              <div class="image-caption">交互问答</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/专家-辅助决策.jpg" class="grid-image" alt="辅助决策" loading="lazy" />
+              <div class="image-caption">辅助决策</div>
+            </div>
+          </template>
+
+          <!-- 全链智溯系统 -->
+          <template v-if="activeTab === 'chain'">
+            <div class="grid-item">
+              <img src="../../assets/hometab/全链-spv列表.jpg" class="grid-image" alt="spv列表" loading="lazy" />
+              <div class="image-caption">spv列表</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/全链-我的投资.jpg" class="grid-image" alt="我的投资" loading="lazy" />
+              <div class="image-caption">我的投资</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/全链-我的投资2.jpg" class="grid-image" alt="更多投资" loading="lazy" />
+              <div class="image-caption">更多投资</div>
+            </div>
+            <div class="grid-item">
+              <img src="../../assets/hometab/全链-项目管理.jpeg" class="grid-image" alt="项目管理" loading="lazy" />
+              <div class="image-caption">项目管理</div>
+            </div>
+          </template>
         </div>
       </div>
     </div>

@@ -4,7 +4,9 @@
             <el-carousel height="500px" motion-blur interval="5000" arrow="always">
                 <el-carousel-item v-for="item in 4" :key="item">
                     <img v-if="item === 1" class="bgmimg" src="../../assets/exp-bgm.png" />
-                    <img v-else class="bgmimg" src="../../assets/home-bgm.png" />
+                    <img v-else-if="item === 2" class="bgmimg" src="../../assets/swiper4.png" />
+                    <img v-else-if="item === 3" class="bgmimg" src="../../assets/swiper5.png" />
+                    <img v-else class="bgmimg" src="../../assets/swiper6.png" />
                 </el-carousel-item>
             </el-carousel>
         </div>
@@ -179,7 +181,7 @@ const tabsData = [
 
 .title {
     width: 80%;
-    margin-top:10px;
+    margin-top: 10px;
     margin-left: 10%;
     display: flex;
     justify-content: space-between;
